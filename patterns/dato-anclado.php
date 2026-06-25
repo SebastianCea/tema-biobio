@@ -6,28 +6,28 @@
  * Description: Imagen fija con cuadro de texto que flota al hacer scroll.
  */
 ?>
+<!-- wp:group {"className":"seccion-pin-corregida","style":{"background":{"backgroundImage":{"url":"http://localhost:8080/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba.png","source":"file","title":"Imagen de fondo"},"backgroundSize":"cover","backgroundPosition":"50% 50%"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group seccion-pin-corregida">
 
-<!-- wp:html -->
-<section class="seccion-pin-corregida">
+<!-- wp:group {"className":"contenedor-del-cuadro","layout":{"type":"default"}} -->
+<div class="wp-block-group contenedor-del-cuadro">
 
-    <!-- 
-    ════════════════════════════════════════
-    INSTRUCCIONES PARA EL PERIODISTA:
-    1. Ve a Biblioteca de Medios
-    2. Sube o selecciona tu imagen
-    3. Copia la URL de la imagen
-    4. Reemplaza el texto PEGA-URL-DE-IMAGEN-AQUI 
-       por la URL que copiaste
-    ════════════════════════════════════════
-    -->
-    <div class="imagen-anclada" style="background-image: url('PEGA-URL-DE-IMAGEN-AQUI');"></div>
+<!-- wp:group {"className":"cuadro-flotante","layout":{"type":"default"}} -->
+<div class="wp-block-group cuadro-flotante">
 
-    <div class="contenedor-del-cuadro">
-        <div class="cuadro-flotante">
-            <h3>Titular del Dato Anclado</h3>
-            <p>Escribe aquí el texto que flotará sobre la imagen mientras el lector hace scroll.</p>
-        </div>
-    </div>
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Titular del Dato Anclado</h3>
+<!-- /wp:heading -->
 
-</section>
-<!-- /wp:html -->
+<!-- wp:paragraph -->
+<p>Escribe aquí el texto que flotará sobre la imagen mientras el lector hace scroll.</p>
+<!-- /wp:paragraph -->
+
+</div>
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
