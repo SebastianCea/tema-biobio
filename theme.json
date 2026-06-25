@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "custom": true,
+            "link": true,
+            "palette": [
+                {
+                    "slug": "blanco",
+                    "color": "#ffffff",
+                    "name": "Blanco"
+                },
+                {
+                    "slug": "negro",
+                    "color": "#1a1a1a",
+                    "name": "Negro"
+                },
+                {
+                    "slug": "azul-biobio",
+                    "color": "#004687",
+                    "name": "Azul BioBio"
+                }
+            ]
+        }
+    }
+}
