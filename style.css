@@ -410,13 +410,18 @@ img { transition: filter 0.5s ease, border-radius 0.5s ease; }
     margin: 30px auto;
     padding: 0 20px;
     display: flex;
+    justify-content: flex-start;
 }
-.contenedor-perfil.alinear-izq,
-.contenedor-perfil.alignleft    { justify-content: flex-start; }
-.contenedor-perfil.alinear-centro,
-.contenedor-perfil.aligncenter  { justify-content: center; }
-.contenedor-perfil.alinear-der,
-.contenedor-perfil.alignright   { justify-content: flex-end; }
+/* Cuando Gutenberg agrega sus clases nativas de alineación al bloque */
+.contenedor-perfil.alignleft   { justify-content: flex-start; }
+.contenedor-perfil.aligncenter { justify-content: center; }
+.contenedor-perfil.alignright  { justify-content: flex-end; }
+ 
+/* Clases manuales (por si se usan desde script.js) */
+.contenedor-perfil.alinear-izq    { justify-content: flex-start; }
+.contenedor-perfil.alinear-centro { justify-content: center; }
+.contenedor-perfil.alinear-der    { justify-content: flex-end; }
+
 
 .perfil-periodista-horizontal {
     display: inline-flex;
