@@ -168,18 +168,14 @@ add_action('enqueue_block_editor_assets', 'biobio_forzar_estilos_editor');
    ESTILOS PERSONALIZADOS PARA GALERÍAS
    =================================================== */
 function biobio_estilos_galeria() {
-    // Registramos tu estilo "Grid"
-    register_block_style(
-        'core/gallery',
-        array(
-            'name'  => 'estilo-grid',
-            'label' => 'Diseño Grid BioBio',
-        )
-    );
+    register_block_style('core/gallery', array('name' => 'estilo-grid', 'label' => 'Diseño Grid BioBio'));
+    register_block_style('core/gallery', array('name' => 'estilo-masonry', 'label' => 'Diseño Masonry BioBio'));
+    register_block_style('core/gallery', array('name' => 'estilo-carrusel', 'label' => 'Diseño Carrusel BioBio'));
+}
     
     // Opcional: Puedes registrar otros si los necesitas a futuro
     // register_block_style('core/gallery', array('name' => 'estilo-slider', 'label' => 'Diseño Slider'));
-}
+
 add_action('init', 'biobio_estilos_galeria');
 
 /* ===================================================
@@ -201,9 +197,36 @@ function biobio_cargar_scripts_editor() {
 add_action('enqueue_block_editor_assets', 'biobio_cargar_scripts_editor');
 
 function biobio_estilos_bloques_nativos() {
+    // 1. Portada exclusiva (Esta se queda solo para el Cover)
     register_block_style('core/cover', array(
         'name'  => 'portada-biobio',
         'label' => 'Portada BioBio'
     ));
+    
+    // 2. Arreglo de todos los bloques que pueden actuar como "Secciones"
+    $bloques_seccion = array(
+        'core/cover',      // Fondo
+        'core/group',      // Grupo
+        'core/columns',    // Columnas
+        'core/media-text', // Medios y Texto
+        'core/image'       // Imagen individual
+    );
+
+    // 3. Ciclo automático para inyectar los botones en todos esos bloques
+    foreach ( $bloques_seccion as $bloque ) {
+        register_block_style( $bloque, array(
+            'name'  => 'fundido-oscuro',
+            'label' => 'Fundido (Abajo)'
+        ));
+        register_block_style( $bloque, array(
+            'name'  => 'fundido-superior',
+            'label' => 'Fundido (Arriba)'
+        ));
+        // NUEVO: Botón para aplicar ambos efectos a la vez
+        register_block_style( $bloque, array(
+            'name'  => 'fundido-ambos',
+            'label' => 'Fundido (Ambos)'
+        ));
+    }
 }
 add_action('init', 'biobio_estilos_bloques_nativos');

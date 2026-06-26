@@ -372,4 +372,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    
+    console.log("Iniciando motor de Scrolltelling BioBio...");
+
+    // 1. Seleccionamos automáticamente todos los bloques que queremos que tengan el efecto.
+    // Si a futuro creas nuevas secciones, solo agregas su clase a esta lista.
+    const elementosAAnimar = document.querySelectorAll(
+        '.bloque-editorial, .modulo-flexible, .seccion-normal, .seccion-parallax, .wp-block-gallery, .seccion-pin-corregida'
+    );
+
+    // 2. Les inyectamos la clase CSS que los vuelve invisibles por defecto
+    elementosAAnimar.forEach(elemento => {
+        elemento.classList.add('animacion-scroll');
+    });
+
+    // 3. Configuramos el vigilante (Intersection Observer)
+    const opciones = {
+        root: null, // Usa la pantalla completa como marco de referencia
+        rootMargin: '0px',
+        threshold: 0.15 // Se activa cuando el 15% del bloque ya entró a la pantalla
+    };
+
+    const vigilanteDeScroll = new IntersectionObserver((entradas, observador) => {
+        entradas.forEach(entrada => {
+            // Si el bloque entró a la pantalla...
+            if (entrada.isIntersecting) {
+                // Le agregamos la clase que le devuelve la opacidad al 100%
+                entrada.target.classList.add('visible');
+                
+                // Opcional: Una vez que apareció, dejamos de vigilarlo para que 
+                // se quede fijo y no vuelva a desaparecer si el usuario sube a leer de nuevo.
+                observador.unobserve(entrada.target);
+            }
+        });
+    }, opciones);
+
+    // 4. Ponemos a trabajar al vigilante sobre cada elemento de nuestra lista
+    elementosAAnimar.forEach(elemento => {
+        vigilanteDeScroll.observe(elemento);
+    });
+
+});
 

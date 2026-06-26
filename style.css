@@ -171,46 +171,53 @@ body[data-tema="oscuro"] .seccion-normal { color: #ffffff; }
 
 
 /* =========================================
-   5. EFECTO PIN / DATO ANCLADO
+   5. EFECTO PIN / DATO ANCLADO (BLINDADO)
    ========================================= */
-/* 1. El contenedor externo */
+
+/* 1. El telón de fondo (Fuerza bruta de altura) */
 .seccion-pin-corregida {
-    position: relative;
-    width: 100%;
-    min-height: 300vh;
-    isolation: isolate;
+    position: relative !important;
+    width: 100% !important;
+    
+    /* FORZAMOS LA PISTA: La sección durará obligatoriamente 3 pantallas de alto */
+    min-height: 300vh !important; 
+    
+    background-attachment: fixed !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    isolation: isolate !important;
 }
  
-/* 2. La imagen de fondo: cubre todo el bloque */
-.seccion-pin-corregida > .imagen-anclada {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
+/* 2. El controlador de tiempos: forzamos altura real */
+.seccion-pin-corregida .contenedor-del-cuadro {
+    position: relative !important;
+    z-index: 2 !important;
+    display: block !important; 
+    
+    /* Forzamos el espacio vacío superior para que la imagen se vea primero */
+    min-height: 200vh !important; 
+    
+    padding-top: 100vh !important; 
+    padding-bottom: 100vh !important; 
+    
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* FIX ANTIMATRIOSKA: Si WP inyecta su contenedor fantasma, lo neutralizamos */
+.seccion-pin-corregida .contenedor-del-cuadro > .wp-block-group__inner-container {
+    display: block !important;
+    height: 100% !important;
 }
  
-/* 3. El contenedor del cuadro */
-.seccion-pin-corregida > .contenedor-del-cuadro {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 100vh;
-    padding-bottom: 100vh;
-    padding-left: 20px;
-    padding-right: 20px;
-}
- 
-/* 4. El cuadro flotante con sticky */
+/* 3. El cuadro flotante */
 .seccion-pin-corregida .cuadro-flotante {
     position: sticky !important;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 auto !important; 
+    
     font-family: 'Merriweather', serif;
     max-width: 800px;
     width: 100%;
@@ -220,18 +227,21 @@ body[data-tema="oscuro"] .seccion-normal { color: #ffffff; }
     transition: background-color 0.3s ease, color 0.3s ease;
 }
  
-body[data-tema="claro"] .seccion-pin-corregida .cuadro-flotante {
+/* Colores dinámicos del cuadro */
+body[data-tema="claro"] .seccion-pin-corregida .cuadro-flotante:not(.has-background) {
     background-color: rgba(255, 255, 255, 0.95);
+}
+body[data-tema="claro"] .seccion-pin-corregida .cuadro-flotante:not(.has-text-color) {
     color: #1a1a1a;
 }
-body[data-tema="oscuro"] .seccion-pin-corregida .cuadro-flotante {
+body[data-tema="oscuro"] .seccion-pin-corregida .cuadro-flotante:not(.has-background) {
     background-color: rgba(26, 26, 26, 0.95);
+}
+body[data-tema="oscuro"] .seccion-pin-corregida .cuadro-flotante:not(.has-text-color) {
     color: #ffffff;
 }
- 
 .seccion-pin-corregida .cuadro-flotante h3 { font-size: 2.2rem; margin-bottom: 25px; }
 .seccion-pin-corregida .cuadro-flotante p  { font-size: 1.2rem; line-height: 1.7; }
- 
 
 /* =========================================
    SISTEMA DE BLOQUES EDITORIALES (CMS BASE)  
@@ -520,33 +530,52 @@ img{
 .wp-block-image.filtro-sepia img { filter: sepia(100%); }
 .wp-block-image.foto-esquinas img { border-radius: 15px; }
 
-/* 2. DISEÑOS OPCIONALES (SE APLICAN A LA GALERÍA) */
-.wp-block-gallery.galeria-dinamica.is-style-estilo-grid {
+/* ===================================================
+   2. DISEÑOS OPCIONALES (SE APLICAN A LA GALERÍA)
+   =================================================== */
+
+/* Diseño 1: Grid Regular */
+.wp-block-gallery.is-style-estilo-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-grid .wp-block-image img {
+/* FIX: Obligamos a la caja de la imagen a llenar su celda y matar los anchos nativos */
+.wp-block-gallery.is-style-estilo-grid .wp-block-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+.wp-block-gallery.is-style-estilo-grid .wp-block-image img {
     height: 280px; 
     width: 100%;
     object-fit: cover;
 }
 
-.wp-block-gallery.galeria-dinamica.is-style-estilo-masonry {
+
+/* Diseño 2: Masonry Puro */
+.wp-block-gallery.is-style-estilo-masonry {
     display: block !important; 
     column-count: 3;
     column-gap: 20px;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-masonry .wp-block-image {
+/* FIX: Obligamos a la caja a llenar la columna y apagar el flex nativo */
+.wp-block-gallery.is-style-estilo-masonry .wp-block-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 20px 0 !important; 
     break-inside: avoid;
-    margin-bottom: 20px; 
+    display: block !important;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-masonry .wp-block-image img {
+.wp-block-gallery.is-style-estilo-masonry .wp-block-image img {
     height: auto; 
     width: 100%;
+    display: block;
 }
 
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel {
+
+/* Diseño 3: Carrusel */
+.wp-block-gallery.is-style-estilo-carrusel {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto;
@@ -555,24 +584,24 @@ img{
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel::-webkit-scrollbar {
+.wp-block-gallery.is-style-estilo-carrusel::-webkit-scrollbar {
     height: 8px;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel::-webkit-scrollbar-track {
+.wp-block-gallery.is-style-estilo-carrusel::-webkit-scrollbar-track {
     background: transparent; 
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel::-webkit-scrollbar-thumb {
+.wp-block-gallery.is-style-estilo-carrusel::-webkit-scrollbar-thumb {
     background: #d1d1d1; 
     border-radius: 10px;
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel::-webkit-scrollbar-thumb:hover {
+.wp-block-gallery.is-style-estilo-carrusel::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8; 
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel .wp-block-image {
+.wp-block-gallery.is-style-estilo-carrusel .wp-block-image {
     flex: 0 0 400px; 
     scroll-snap-align: center; 
 }
-.wp-block-gallery.galeria-dinamica.is-style-estilo-carrusel .wp-block-image img {
+.wp-block-gallery.is-style-estilo-carrusel .wp-block-image img {
     height: 350px;
     width: 100%;
     object-fit: cover;
@@ -657,35 +686,38 @@ img{
     }
 
 
-    /* --- 3. FIX: EFECTO PIN Y CUADRO FLOTANTE --- */
-    .seccion-pin-corregida > .imagen-anclada,
-    .seccion-pin-corregida > .fondo-anclado-video {
-        position: -webkit-sticky; 
-        position: sticky;
-        top: 0;
-        height: 100svh;
-        z-index: 1;
-    }
-    
-    .seccion-pin-corregida > .contenedor-del-cuadro {
-        position: relative;
-        z-index: 2;
-        margin-top: -100svh; 
-        padding-top: 120svh; 
-        padding-bottom: 80svh;
-    }
-    
-    .seccion-pin-corregida .cuadro-flotante {
-        width: 92%; 
-        margin: 0 auto;
-        padding: 30px 20px;
-        position: relative;
-        z-index: 3; 
-    }
+  /* 5. EFECTO PIN DEFINITIVO */
+.seccion-pin-corregida {
+    position: relative !important;
+    min-height: 100vh !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-size: cover !important;
+    width: 100% !important;
+}
+
+/* El cuadro ahora no necesita padding, el Espaciador hace el trabajo */
+.seccion-pin-corregida .contenedor-del-cuadro {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 2 !important;
+}
+
+.seccion-pin-corregida .cuadro-flotante {
+    max-width: 800px;
+    width: 90%;
+    padding: 40px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
     .seccion-pin-corregida .cuadro-flotante h3 { font-size: 1.6rem; }
     .seccion-pin-corregida .cuadro-flotante p { font-size: 1rem; }
-
 
     /* --- 4. TEXTOS Y MÓDULOS GLOBALES --- */
     .contenido-seccion h1 { font-size: 2rem; }
@@ -773,47 +805,31 @@ body.logged-in .header-principal {
    (Evita que los bloques se superpongan al editar)
    ========================================= */
 
-/* 1. Apagamos la superposición de la sección anclada */
+/* 1. Apagamos el parallax gigante para que sea fácil editar */
 .editor-styles-wrapper .seccion-pin-corregida {
+    background-attachment: scroll !important;
     display: flex !important;
-    flex-direction: column !important;
-    gap: 30px !important;
-    isolation: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 60px 20px !important;
 }
 
-/* 2. Forzamos a la imagen a quedarse quieta */
-.editor-styles-wrapper .seccion-pin-corregida > .imagen-anclada {
-    position: relative !important; 
-    height: 350px !important; 
-    min-height: 350px !important;
-    z-index: 1 !important;
+/* 2. Soltamos los paddings kilométricos invisibles */
+.editor-styles-wrapper .seccion-pin-corregida .contenedor-del-cuadro {
+    padding-top: 0 !important; 
+    padding-bottom: 0 !important;
 }
 
-/* 3. Permitimos clics en la imagen */
-.editor-styles-wrapper .seccion-pin-corregida > .imagen-anclada .wp-block-cover__background {
-    pointer-events: none !important;
-}
-.editor-styles-wrapper .seccion-pin-corregida > .imagen-anclada .wp-block-cover__image-background {
-    pointer-events: auto !important;
-}
-
-/* 4. Soltamos la caja de texto */
-.editor-styles-wrapper .seccion-pin-corregida > .contenedor-del-cuadro {
+/* 3. Liberamos el cuadro flotante de la regla Sticky para poder hacerle clic */
+.editor-styles-wrapper .seccion-pin-corregida .cuadro-flotante {
     position: relative !important;
-    margin-top: 0 !important; 
-    padding-top: 20px !important; 
-    padding-bottom: 20px !important;
-}
-
-/* 5. Aseguramos clics en los textos internos */
-.editor-styles-wrapper .seccion-pin-corregida .cuadro-flotante,
-.editor-styles-wrapper .seccion-pin-corregida .cuadro-flotante * {
+    top: auto !important;
+    transform: none !important;
     pointer-events: auto !important;
 }
 
-/* 6. Evita que los videos fijos bloqueen clics */
-.editor-styles-wrapper .seccion-video-full video,
-.editor-styles-wrapper .seccion-pin-corregida > .fondo-anclado-video video {
+/* 4. Evita que los videos de otras secciones bloqueen clics */
+.editor-styles-wrapper .seccion-video-full video {
     position: relative !important;
     height: 400px !important;
     z-index: 0 !important;
@@ -981,4 +997,75 @@ div.perfil-periodista-horizontal {
 
 .editor-styles-wrapper .aviso-editor-biobio {
     display: block;
+}
+
+/* ===================================================
+   EFECTO FUNDIDO OSCURO UNIVERSAL (GRADIENT FADE)
+   =================================================== */
+
+/* 1. Base: Asegura que la sombra no se desborde */
+.is-style-fundido-oscuro,
+.is-style-fundido-superior,
+.is-style-fundido-ambos {
+    position: relative;
+}
+
+/* 2. FUNDIDO HACIA ABAJO (Se aplica al de abajo y al de ambos) */
+.is-style-fundido-oscuro::after,
+.is-style-fundido-ambos::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(26,26,26,0) 0%, 
+        rgba(26,26,26,0.4) 40%, 
+        rgba(26,26,26,0.8) 75%, 
+        rgba(26,26,26,1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 3. FUNDIDO HACIA ARRIBA (Se aplica al de arriba y al de ambos) */
+.is-style-fundido-superior::before,
+.is-style-fundido-ambos::before {
+    content: "";
+    position: absolute;
+    top: -2px; 
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+        to top, 
+        rgba(26,26,26,0) 0%, 
+        rgba(26,26,26,0.6) 50%, 
+        rgba(26,26,26,1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 4. PROTECCIÓN DE CONTENIDOS (Mantiene los textos arriba de las sombras) */
+.is-style-fundido-oscuro > *,
+.is-style-fundido-superior > *,
+.is-style-fundido-ambos > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Excepción de seguridad para fondos nativos */
+.is-style-fundido-oscuro > .wp-block-cover__image-background,
+.is-style-fundido-oscuro > .wp-block-cover__video-background,
+.is-style-fundido-oscuro > .wp-block-cover__background,
+.is-style-fundido-superior > .wp-block-cover__image-background,
+.is-style-fundido-superior > .wp-block-cover__video-background,
+.is-style-fundido-superior > .wp-block-cover__background,
+.is-style-fundido-ambos > .wp-block-cover__image-background,
+.is-style-fundido-ambos > .wp-block-cover__video-background,
+.is-style-fundido-ambos > .wp-block-cover__background {
+    z-index: 0 !important;
 }
