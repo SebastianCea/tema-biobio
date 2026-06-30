@@ -230,3 +230,10 @@ function biobio_estilos_bloques_nativos() {
     }
 }
 add_action('init', 'biobio_estilos_bloques_nativos');
+
+// PEGAR TEMPORALMENTE EN functions.php — QUITAR DESPUÉS DE RECARGAR
+// Fuerza a WordPress a releer todos los patrones desde disco
+add_action('init', function() {
+    delete_transient('wp_block_patterns');
+    delete_transient('wp_remote_block_patterns');
+}, 1);
