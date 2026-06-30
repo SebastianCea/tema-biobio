@@ -116,29 +116,21 @@ body.logged-in .header-principal {
 
 /* Parallax */
 .seccion-parallax {
-    height: 800px;
-    background-attachment: fixed;
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Altura que ocupa la imagen */
+    background-attachment: fixed; /* Esto es lo que hace el efecto parallax */
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    background-color: transparent;
-    background-blend-mode: multiply;
-    transition: background-color 0.3s ease;
 }
 
 .contenido-seccion {
-    text-align: left;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    max-width: 800px;
+    text-align: center;
     z-index: 2;
-    position: relative;
 }
 
 /* Sección estándar de texto */
@@ -275,6 +267,97 @@ body[data-tema="oscuro"] .seccion-pin-corregida .cuadro-flotante {
 
 .seccion-pin-corregida .cuadro-flotante h3 { font-size: 2.2rem; margin-bottom: 25px; }
 .seccion-pin-corregida .cuadro-flotante p  { font-size: 1.2rem; line-height: 1.7; }
+
+/* Ajuste fino para videos dentro del bloque Pin */
+.seccion-pin-corregida video {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Mantiene la proporción sin deformar */
+    z-index: -1 !important;
+}
+
+/* Evitamos que los controles del video interfieran con el scroll */
+.seccion-pin-corregida .wp-block-cover__video-background {
+    pointer-events: none !important;
+}
+
+/* =========================================
+   8. DATO ANCLADO VIDEO (Efecto Sticky Sincronizado)
+   ========================================= */
+
+/* 1. El riel de scroll (debe durar lo mismo que el de imagen) */
+.seccion-video-pin {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 300vh !important; /* Misma duración: entrada, pausa, salida */
+}
+
+/* 2. El video (El actor que se queda quieto) */
+.seccion-video-pin .contenedor-video-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important; /* Se fija exactamente a la altura de la pantalla */
+    width: 100% !important;
+    z-index: 1 !important;
+    background-color: #000; /* Fondo negro mientras carga el video */
+}
+
+.seccion-video-pin .contenedor-video-sticky iframe,
+.seccion-video-pin .contenedor-video-sticky video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* 3. El texto (El cuadro flotante sincronizado) */
+.seccion-video-pin .contenedor-del-cuadro {
+    position: relative !important;
+    z-index: 2 !important;
+    /* La misma matemática: 100vh de espera, 100vh de visibilidad */
+    padding-top: 100vh !important;
+    padding-bottom: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* 4. El cuadro flotante (estilo heredado del anterior) */
+.seccion-video-pin .cuadro-flotante {
+    position: sticky !important;
+    top: calc(50vh - 100px) !important; /* Misma posición vertical */
+    max-width: 800px;
+    width: 90%;
+    z-index: 3 !important;
+}
+
+/* El contenedor es el bloque Grupo con el estilo aplicado */
+.wp-block-group.is-style-seccion-video-pin {
+    position: relative !important;
+    min-height: 300vh !important;
+    width: 100% !important;
+}
+
+/* El bloque de video dentro (debe ser el primer hijo) */
+.wp-block-group.is-style-seccion-video-pin > .wp-block-group__inner-container > :first-child {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    width: 100% !important;
+    z-index: 1 !important;
+}
+
+/* El contenedor del texto (el segundo hijo) */
+.wp-block-group.is-style-seccion-video-pin > .wp-block-group__inner-container > :nth-child(2) {
+    position: relative !important;
+    z-index: 2 !important;
+    padding: 100vh 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
 
 /* =========================================
    5. SISTEMA DE BLOQUES EDITORIALES
@@ -917,4 +1000,55 @@ div.perfil-periodista-horizontal {
     /* Bloque mixto */
     .bloque-editorial.variante-mixto.texto-izquierda,
     .bloque-editorial.variante-mixto.texto-derecha { flex-direction: column; }
+}
+
+/* =========================================
+   DATO ANCLADO VIDEO
+   ========================================= */
+
+/* El video dentro del pin usa sticky en vez de fixed
+   porque fixed no funciona cuando hay un ancestro con transform */
+.seccion-pin-corregida .contenedor-video-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+    margin-bottom: -100vh; /* Permite que el cuadro se superponga */
+}
+
+/* El video de fondo dentro del Cover sticky */
+.seccion-pin-corregida .contenedor-video-sticky video,
+.seccion-pin-corregida .contenedor-video-sticky .wp-block-cover__video-background {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+}
+
+/* El inner-container del Cover no debe tapar el video */
+.seccion-pin-corregida .contenedor-video-sticky .wp-block-cover__inner-container {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Fix editor: apagamos el sticky para que sea editable */
+.editor-styles-wrapper .seccion-pin-corregida .contenedor-video-sticky {
+    position: relative !important;
+    height: 400px !important;
+    min-height: 400px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+    .seccion-pin-corregida .contenedor-video-sticky {
+        height: 100svh !important;
+        min-height: 100svh !important;
+    }
 }

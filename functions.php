@@ -57,7 +57,7 @@ add_action('wp_head', 'inyectar_colores_biobio');
 function registrar_categoria_patrones_biobio() {
     register_block_pattern_category(
         'biobio-secciones',
-        array( 'label' => 'Secciones BioBio' )
+        array( 'label' => 'Nota Dinámica Bio Bio' )
     );
 }
 add_action( 'init', 'registrar_categoria_patrones_biobio' );
@@ -196,6 +196,7 @@ function biobio_cargar_scripts_editor() {
 }
 add_action('enqueue_block_editor_assets', 'biobio_cargar_scripts_editor');
 
+
 function biobio_estilos_bloques_nativos() {
     // 1. Portada exclusiva (Esta se queda solo para el Cover)
     register_block_style('core/cover', array(
@@ -231,9 +232,17 @@ function biobio_estilos_bloques_nativos() {
 }
 add_action('init', 'biobio_estilos_bloques_nativos');
 
-// PEGAR TEMPORALMENTE EN functions.php — QUITAR DESPUÉS DE RECARGAR
-// Fuerza a WordPress a releer todos los patrones desde disco
+/**
+ * Registrar el bloque de Video Anclado
+ */
+
 add_action('init', function() {
+    // Esto borra la caché de patrones almacenada en la base de datos
     delete_transient('wp_block_patterns');
     delete_transient('wp_remote_block_patterns');
 }, 1);
+
+
+// PEGAR TEMPORALMENTE EN functions.php — QUITAR DESPUÉS DE RECARGAR
+// Fuerza a WordPress a releer todos los patrones desde disco
+
