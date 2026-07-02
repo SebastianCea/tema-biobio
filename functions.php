@@ -237,11 +237,15 @@ add_action('init', 'biobio_estilos_bloques_nativos');
  */
 
 add_action('init', function() {
-    // Esto borra la caché de patrones almacenada en la base de datos
     delete_transient('wp_block_patterns');
     delete_transient('wp_remote_block_patterns');
+    WP_Block_Patterns_Registry::get_instance()->get_all_registered();
 }, 1);
 
+add_action('init', function() {
+    global $wp_block_patterns_registry;
+    $wp_block_patterns_registry = null;
+}, 0);
 
 // PEGAR TEMPORALMENTE EN functions.php — QUITAR DESPUÉS DE RECARGAR
 // Fuerza a WordPress a releer todos los patrones desde disco
