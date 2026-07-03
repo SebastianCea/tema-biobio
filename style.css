@@ -572,6 +572,12 @@ img { transition: filter 0.5s ease, border-radius 0.5s ease; }
     transform: translateY(0);
 }
 
+.contenedor-perfil.wp-block-group {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
 /* =========================================
    7. GALERÍA DINÁMICA
    ========================================= */
@@ -1061,4 +1067,49 @@ div.perfil-periodista-horizontal {
         height: 100svh !important;
         min-height: 100svh !important;
     }
+}
+
+.seccion-creditos {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    /* Esto es clave: asegura que el bloque se posicione después del contenido anterior */
+    margin-top: 100vh !important; 
+    padding: 60px 20px !important;
+    background-color: #ffffff;
+    z-index: 10 !important; /* Asegura que esté por encima de fondos */
+}
+
+.seccion-creditos h2 {
+    color: #4a1c1c; /* Un tono café/oscuro similar a la imagen */
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.seccion-creditos p {
+    margin-bottom: 20px;
+    line-height: 1.4;
+    color: #000000;
+}
+
+.seccion-creditos strong {
+    color: #4a1c1c;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* El contenedor raíz que define el fondo de toda la sección */
+.seccion-creditos-final {
+    width: 100% !important; /* Fuerza el ancho total */
+    max-width: 100% !important;
+    padding: 80px 20px !important;
+    margin: 0 !important;
+    background-color: var(--wp--preset--color--light-gray) !important;
+    display: block !important;
+}
+
+/* Asegurar que el contenido interno se centre y se vea bien */
+.seccion-creditos-final .wp-block-group {
+    max-width: 800px;
+    margin: 0 auto;
 }

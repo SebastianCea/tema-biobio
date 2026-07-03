@@ -236,17 +236,3 @@ add_action('init', 'biobio_estilos_bloques_nativos');
  * Registrar el bloque de Video Anclado
  */
 
-add_action('init', function() {
-    delete_transient('wp_block_patterns');
-    delete_transient('wp_remote_block_patterns');
-    WP_Block_Patterns_Registry::get_instance()->get_all_registered();
-}, 1);
-
-add_action('init', function() {
-    global $wp_block_patterns_registry;
-    $wp_block_patterns_registry = null;
-}, 0);
-
-// PEGAR TEMPORALMENTE EN functions.php — QUITAR DESPUÉS DE RECARGAR
-// Fuerza a WordPress a releer todos los patrones desde disco
-
