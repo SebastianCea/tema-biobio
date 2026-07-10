@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head data-id-nota="<!--#echo var="id" -->">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!--#echo var="title" encoding="none" --> - BioBioChile</title>
+    
+    <!-- Metatags SEO de BioBio -->
+    <!--#include virtual="/metatags-nota.shtml"-->
+    
+    <!-- Librerías de Fuentes e Iconos (Desde tu HTML) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- ESTILOS DE TU NUEVO TEMA DINÁMICO (Asegúrate de que la ruta sea correcta en el servidor) -->
+    <link rel="stylesheet" href="/ruta-a-tu-tema/css/style.css?v=1.0"> 
+    
+    <!-- Scripts Base de BioBio -->
+    <script src="https://libs.biobiochile.cl/bbcl/axios/1.1.2/axios.min.js"></script>
+    <script src="//libs.biobiochile.cl/bbcltv-2019/jquery-3.3.1/jquery.min.js?v=3.3.1"></script>
+
+    <!-- Contadores Internos -->
+    <!--#include virtual="/contadores.shtml"-->
+
+    <!-- SCRIPT ANUNCIOS -->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || {cmd: []};
+        googletag.cmd.push(function() {
+            var targetingKeywords = '<!--#echo encoding="none" var="keywords"-->';
+            var path = window.location.pathname.split('/');
+            var targeting_category_primary = (path.length === 7) ? path[2] : ((path.length === 8) ? path[3] : path[3] + '-' + path[4]);
+            targeting_category_primary = targeting_category_primary === 'deporte' ? 'deportes' : targeting_category_primary;
+            
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.pubads()
+                .setTargeting('tipo', 'articulo-dinamico')
+                .setTargeting('post-id', '<!--#echo var="id" -->')
+                .setTargeting('category-primary', targeting_category_primary)
+                .setTargeting('keywords', targetingKeywords.split(',').map(s => s.normalize("NFKD").replace(/[^a-z0-9\s]/gi, "").trim().toLowerCase()));
+            googletag.enableServices();
+        });
+    </script>
+</head>
+
+<body>
+
+    <!-- TU HEADER PERSONALIZADO -->
+    <!-- Nota: Recibe el color desde WordPress e imprime el atributo data-tema mediante JS más abajo -->
+    <header class="header-principal" id="header-dinamico" style="background-color: <!--#echo var='color_cabecera' --> !important;">
+        <div class="contenedor-header">
+            <div class="logo-sitio">
+                <a href="https://biobiochile.cl" target="_blank">
+                    <!-- Asegúrate de colocar la ruta absoluta a la imagen del logo en el servidor -->
+                    <img src="/ruta-a-tu-tema/images/BioBio/logo-biobio.png" alt="BioBioChile" class="imagen-logo">
+                </a>
+            </div>
+
+            <div class="redes-sociales">
+                <a href="https://www.facebook.com/RadioBioBio" class="icono-red" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://x.com/biobio" class="icono-red" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/biobiochile/" class="icono-red" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCuvM3c8rmdApmk-g22shZ7w" class="icono-red" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/biobiochile/" class="icono-red" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PUBLICIDAD SUPERIOR -->
+    <div class="ad-top-container">
+        <div id="ad_top" class="mx-auto my-4" style="display: none;">
+            <script>
+                googletag.cmd.push(function () {
+                    googletag.defineSlot("/1098385/biobiocl/ad_top", [[970, 90], [320, 100]], "ad_top").addService(googletag.pubads());
+                    googletag.display("ad_top");
+                });
+            </script>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL: AQUÍ VIVE TU CÓDIGO -->
+    <main class="contenido-principal">
+        
+        <div data-id="<!--#echo var='id' -->" class="nota-content-dinamica">
+
+            <!-- 1. ALERTAS EDITORIALES -->
+            <!--#if expr="$endesarrollo = y" -->
+            <div class="bbcl-alert alert-en-desarrollo"><div class="alert-title"><span class="fas fa-info-circle"></span> Noticia en Desarrollo</div></div>
+            <!--#endif -->
+            <!--#if expr="$spoiler = y" -->
+            <div class="bbcl-alert alert-spoiler"><div class="alert-title"><span class="fas fa-exclamation-triangle"></span> Alerta de Spoiler</div></div>
+            <!--#endif -->
+            
+            <!-- 2. LA MAGIA DE GUTENBERG (Todos tus patrones inyectados aquí) -->
+            <!--#echo var="content" encoding="none" -->
+
+        </div>
+
+        <!-- 3. SECCIÓN DE COMENTARIOS -->
+        <div id="appComponentComunidad" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+            <cbb-comentarios :url="'<!--#echo var="url" -->'"></cbb-comentarios>
+        </div>
+
+        <!-- 4. LO MÁS VISTO -->
+        <!--#include virtual="includes/most_readed_nota.shtml"-->
+
+    </main>
+
+    <!-- TU FOOTER PERSONALIZADO -->
+    <footer class="footer-biobio" id="footer-dinamico" style="background-color: <!--#echo var='color_footer' --> !important;">
+        <div class="footer-contenido">
+            <!-- Asegúrate de colocar la ruta absoluta a la imagen -->
+            <img src="/ruta-a-tu-tema/images/BioBio/biobio.png" alt="BioBio" class="logo-footer">
+            <p class="texto-footer">Desarrollado por Bío Bío Comunicaciones Concepción - Chile.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE CÁLCULO DE CONTRASTE Y JS FINAL -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // Función para calcular si el color que envió el periodista es Claro u Oscuro
+            function adaptarContraste(elementoId, colorHex) {
+                const elemento = document.getElementById(elementoId);
+                if (!elemento || !colorHex || colorHex.trim() === '') return;
+                
+                let hex = colorHex.replace('#', '');
+                if (hex.length === 3) hex = hex.split('').map(char => char + char).join('');
+                if (hex.length !== 6) return;
+                
+                let r = parseInt(hex.substring(0, 2), 16);
+                let g = parseInt(hex.substring(2, 4), 16);
+                let b = parseInt(hex.substring(4, 6), 16);
+                
+                let luminancia = (r * 0.299) + (g * 0.587) + (b * 0.114);
+                // Asigna "claro" u "oscuro" para que tu CSS cambie los logos y letras
+                elemento.setAttribute('data-tema', luminancia > 150 ? 'claro' : 'oscuro');
+            }
+
+            // Aplicamos la evaluación al Header y al Footer con las variables que escupió el servidor
+            adaptarContraste('header-dinamico', '<!--#echo var="color_cabecera" -->');
+            adaptarContraste('footer-dinamico', '<!--#echo var="color_footer" -->');
+
+            // Contador de visitas nativo de BioBio
+            function cargarVisitas(id) {
+                if(typeof getVisits === "function") {
+                    getVisits(id, axios).then(function (visitas) {
+                        let contador = document.getElementById('visitas');
+                        if(contador) contador.textContent = visitas.toLocaleString();
+                    });
+                }
+            }
+            cargarVisitas(<!--#echo var="id" -->);
+        });
+    </script>
+
+    <!-- Componente de comentarios -->
+    <script type="module">
+        import { mountCbbComentarios } from 'https://comunidad-libs.biobiochile.cl/bb-components.js?v=1';
+        mountCbbComentarios('#appComponentComunidad');
+    </script>
+    
+    <!-- TU SCRIPT PRINCIPAL (Donde pusimos los Intersection Observers) -->
+    <script defer src="/ruta-a-tu-tema/js/script.js?v=1.0"></script>
+
+</body>
+</html>
