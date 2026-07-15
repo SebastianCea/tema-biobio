@@ -15,9 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     
-    <!-- ESTILOS DE TU NUEVO TEMA DINÁMICO -->
+    <!-- ESTILOS TEMA DINÁMICO -->
     <!-- Asegúrate de actualizar la ruta al CSS cuando se suba al servidor -->
-    <link rel="stylesheet" href="/ruta-a-tu-tema/css/style.css?v=1.0"> 
+    <link rel="stylesheet" href="/.../css/style.css?v=1.0"> 
     
     <!-- Scripts Base de BioBio -->
     <script src="https://libs.biobiochile.cl/bbcl/axios/1.1.2/axios.min.js"></script>
@@ -57,7 +57,7 @@
             <div class="logo-sitio">
                 <a href="https://biobiochile.cl" target="_blank">
                     <!-- Asegúrate de colocar la ruta absoluta a la imagen del logo en el servidor -->
-                    <img src="/ruta-a-tu-tema/images/BioBio/logo-biobio.png" alt="BioBioChile" class="imagen-logo">
+                    <img src="/.../images/BioBio/logo-biobio.png" alt="BioBioChile" class="imagen-logo">
                 </a>
             </div>
 
@@ -99,7 +99,7 @@
     <footer class="footer-biobio" id="footer-dinamico" style="background-color: <!--#echo var='color_footer' --> !important;">
         <div class="footer-contenido">
             <!-- Asegúrate de colocar la ruta absoluta a la imagen -->
-            <img src="/ruta-a-tu-tema/images/BioBio/biobio.png" alt="BioBio" class="logo-footer">
+            <img src="/.../images/BioBio/biobio.png" alt="BioBio" class="logo-footer">
             <p class="texto-footer">Desarrollado por Bío Bío Comunicaciones Concepción - Chile.</p>
         </div>
     </footer>
@@ -144,7 +144,7 @@
     </script>
 
     <!-- SCRIPT PRINCIPAL (Animaciones, scrolltelling y optimización de video) -->
-    <script defer src="/ruta-a-tu-tema/js/script.js?v=1.0"></script>
+    <script defer src="/.../js/script.js?v=1.0"></script>
 
 </body>
 </html>
