@@ -9,13 +9,14 @@
     <!-- Metatags SEO de BioBio -->
     <!--#include virtual="/metatags-nota.shtml"-->
     
-    <!-- Librerías de Fuentes e Iconos (Desde tu HTML) -->
+    <!-- Librerías de Fuentes e Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     
-    <!-- ESTILOS DE TU NUEVO TEMA DINÁMICO (Asegúrate de que la ruta sea correcta en el servidor) -->
+    <!-- ESTILOS DE TU NUEVO TEMA DINÁMICO -->
+    <!-- Asegúrate de actualizar la ruta al CSS cuando se suba al servidor -->
     <link rel="stylesheet" href="/ruta-a-tu-tema/css/style.css?v=1.0"> 
     
     <!-- Scripts Base de BioBio -->
@@ -25,7 +26,7 @@
     <!-- Contadores Internos -->
     <!--#include virtual="/contadores.shtml"-->
 
-    <!-- SCRIPT ANUNCIOS -->
+    <!-- SCRIPT ANUNCIOS  -->
     <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
         window.googletag = window.googletag || {cmd: []};
@@ -49,8 +50,8 @@
 
 <body>
 
-    <!-- TU HEADER PERSONALIZADO -->
-    <!-- Nota: Recibe el color desde WordPress e imprime el atributo data-tema mediante JS más abajo -->
+    <!-- HEADER PERSONALIZADO -->
+    <!-- Recibe el color desde WordPress e imprime el atributo data-tema mediante JS -->
     <header class="header-principal" id="header-dinamico" style="background-color: <!--#echo var='color_cabecera' --> !important;">
         <div class="contenedor-header">
             <div class="logo-sitio">
@@ -82,35 +83,19 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR PRINCIPAL: AQUÍ VIVE TU CÓDIGO -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <main class="contenido-principal">
         
         <div data-id="<!--#echo var='id' -->" class="nota-content-dinamica">
-
-            <!-- 1. ALERTAS EDITORIALES -->
-            <!--#if expr="$endesarrollo = y" -->
-            <div class="bbcl-alert alert-en-desarrollo"><div class="alert-title"><span class="fas fa-info-circle"></span> Noticia en Desarrollo</div></div>
-            <!--#endif -->
-            <!--#if expr="$spoiler = y" -->
-            <div class="bbcl-alert alert-spoiler"><div class="alert-title"><span class="fas fa-exclamation-triangle"></span> Alerta de Spoiler</div></div>
-            <!--#endif -->
             
-            <!-- 2. LA MAGIA DE GUTENBERG (Todos tus patrones inyectados aquí) -->
+            <!-- GUTENBERG  -->
             <!--#echo var="content" encoding="none" -->
 
         </div>
 
-        <!-- 3. SECCIÓN DE COMENTARIOS -->
-        <div id="appComponentComunidad" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
-            <cbb-comentarios :url="'<!--#echo var="url" -->'"></cbb-comentarios>
-        </div>
-
-        <!-- 4. LO MÁS VISTO -->
-        <!--#include virtual="includes/most_readed_nota.shtml"-->
-
     </main>
 
-    <!-- TU FOOTER PERSONALIZADO -->
+    <!-- FOOTER PERSONALIZADO -->
     <footer class="footer-biobio" id="footer-dinamico" style="background-color: <!--#echo var='color_footer' --> !important;">
         <div class="footer-contenido">
             <!-- Asegúrate de colocar la ruta absoluta a la imagen -->
@@ -137,7 +122,7 @@
                 let b = parseInt(hex.substring(4, 6), 16);
                 
                 let luminancia = (r * 0.299) + (g * 0.587) + (b * 0.114);
-                // Asigna "claro" u "oscuro" para que tu CSS cambie los logos y letras
+                // Asigna "claro" u "oscuro" 
                 elemento.setAttribute('data-tema', luminancia > 150 ? 'claro' : 'oscuro');
             }
 
@@ -158,13 +143,7 @@
         });
     </script>
 
-    <!-- Componente de comentarios -->
-    <script type="module">
-        import { mountCbbComentarios } from 'https://comunidad-libs.biobiochile.cl/bb-components.js?v=1';
-        mountCbbComentarios('#appComponentComunidad');
-    </script>
-    
-    <!-- TU SCRIPT PRINCIPAL (Donde pusimos los Intersection Observers) -->
+    <!-- SCRIPT PRINCIPAL (Animaciones, scrolltelling y optimización de video) -->
     <script defer src="/ruta-a-tu-tema/js/script.js?v=1.0"></script>
 
 </body>
