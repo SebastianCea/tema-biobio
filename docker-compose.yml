@@ -1,0 +1,30 @@
+services:
+  sebadb:
+    image: mariadb:11.1.2
+    restart: always
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_RANDOM_ROOT_PASSWORD: "true"
+    volumes: 
+      - db_data:/var/lib/mysql/
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    restart: always
+    ports:
+      - "${WORDPRESS_PORT:-8060}:80"
+    environment:
+      WORDPRESS_DB_HOST: sebadb
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      # ESTA ES LA ÚNICA LÍNEA QUE NECESITAS
+      - ./wordpress/web:/var/www/html
+    depends_on:
+      - sebadb
+
+volumes:
+  db_data:

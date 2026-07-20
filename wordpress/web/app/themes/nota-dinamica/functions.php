@@ -10,7 +10,12 @@ function cargar_recursos_biobio() {
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap', array(), null );
     
     // 3. Tu style.css principal
-    wp_enqueue_style( 'estilo-principal', get_stylesheet_uri(), array(), '1.0' );
+    wp_enqueue_style( 
+        'estilo-principal', 
+        get_template_directory_uri() . '/css/style.css', 
+        array(), 
+        '1.0' 
+    );
 
     // 4. Tu script.js
     wp_enqueue_script( 'script-biobio', get_template_directory_uri() . '/js/script.js', array(), '1.0', true );
@@ -25,6 +30,7 @@ function activar_soporte_biobio() {
     add_theme_support('core-block-patterns');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+    add_editor_style('css/style.css');
 }
 add_action( 'after_setup_theme', 'activar_soporte_biobio' );
 

@@ -9,7 +9,7 @@ const InspectorControls = window.wp.blockEditor ? window.wp.blockEditor.Inspecto
 const PanelBody = window.wp.components.PanelBody;
 const ToggleControl = window.wp.components.ToggleControl;
 
-// 1. Registro de atributos (Con Sepia incluido)
+// 1. Registro de atributos
 addFilter('blocks.registerBlockType', 'biobio/atributos-imagen', function(settings, name) {
     if (name === 'core/image') {
         settings.attributes = Object.assign({}, settings.attributes, {
@@ -22,49 +22,53 @@ addFilter('blocks.registerBlockType', 'biobio/atributos-imagen', function(settin
     return settings;
 });
 
-// 2. Interfaz Visual (El Panel y los 4 Botones)
+// 2. Interfaz Visual (La función corregida y única)
 const agregarControlesVisuales = createHigherOrderComponent(function(BlockEdit) {
     return function(props) {
+        // Solo actuar sobre bloques de imagen
         if (props.name !== 'core/image') {
             return el(BlockEdit, props);
         }
 
+        // 1. Calcular las clases basándonos en los atributos actuales
+        const { efectoZoom, efectoByn, efectoSepia, fotoEsquinas } = props.attributes;
+        let nuevasClases = props.attributes.className || ''; 
+        
+        if (efectoZoom) nuevasClases += ' efecto-zoom';
+        if (efectoByn) nuevasClases += ' filtro-byn';
+        if (efectoSepia) nuevasClases += ' filtro-sepia';
+        if (fotoEsquinas) nuevasClases += ' foto-esquinas';
+
+        // 2. Renderizar el bloque con las clases inyectadas
         return el(
             Fragment,
             null,
-            el(BlockEdit, props),
+            // Pasamos className para que el editor pinte los cambios en tiempo real
+            el(BlockEdit, { ...props, className: nuevasClases.trim() }), 
             el(
                 InspectorControls,
                 null,
                 el(
                     PanelBody,
                     { title: '🎨 Efectos BioBio', initialOpen: true },
-                    
-                    // Botón 1: Zoom
                     el(ToggleControl, {
-                        label: 'Efecto Zoom al pasar cursor',
-                        checked: !!props.attributes.efectoZoom,
+                        label: 'Efecto Zoom',
+                        checked: !!efectoZoom,
                         onChange: function(val) { props.setAttributes({ efectoZoom: val }); }
                     }),
-                    
-                    // Botón 2: Blanco y Negro
                     el(ToggleControl, {
-                        label: 'Filtro: Blanco y Negro',
-                        checked: !!props.attributes.efectoByn,
+                        label: 'Blanco y Negro',
+                        checked: !!efectoByn,
                         onChange: function(val) { props.setAttributes({ efectoByn: val }); }
                     }),
-
-                    // Botón 3: Sepia (Inyectado con coma correcta al final)
                     el(ToggleControl, {
-                        label: 'Filtro: Sepia',
-                        checked: !!props.attributes.efectoSepia,
+                        label: 'Filtro Sepia',
+                        checked: !!efectoSepia,
                         onChange: function(val) { props.setAttributes({ efectoSepia: val }); }
                     }),
-                    
-                    // Botón 4: Esquinas
                     el(ToggleControl, {
                         label: 'Bordes Redondeados',
-                        checked: !!props.attributes.fotoEsquinas,
+                        checked: !!fotoEsquinas,
                         onChange: function(val) { props.setAttributes({ fotoEsquinas: val }); }
                     })
                 )
@@ -75,7 +79,7 @@ const agregarControlesVisuales = createHigherOrderComponent(function(BlockEdit) 
 
 addFilter('editor.BlockEdit', 'biobio/panel-imagen', agregarControlesVisuales);
 
-// 3. Inyección de las clases CSS en el HTML público
+// 3. Inyección de las clases CSS en el HTML público (Frontend)
 addFilter('blocks.getSaveContent.extraProps', 'biobio/inyectar-clases-imagen', function(extraProps, blockType, attributes) {
     if (blockType.name === 'core/image') {
         let clases = extraProps.className || '';

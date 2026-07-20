@@ -1,0 +1,18 @@
+# --- Configuración y Secretos ---
+.env
+.env.local
+
+# --- Dependencias (Composer/WordPress) ---
+/vendor/
+/web/wp/
+
+# --- Docker y Datos Locales ---
+docker-compose.override.yml
+/db_data/
+
+# --- Archivos de Sistema y Editores ---
+.DS_Store
+.idea/
+.vscode/
+*.log
+Thumbs.db

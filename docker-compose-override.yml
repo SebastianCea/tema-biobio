@@ -1,0 +1,8 @@
+services:
+  sebadb:
+    ports:
+      - "3306:3306" # Esto abre la BD a tu PC (usar solo en desarrollo!)
+  
+  wordpress:
+    environment:
+      - WP_ENV=development # Activa los mensajes de error útilesdocker-compose-development
