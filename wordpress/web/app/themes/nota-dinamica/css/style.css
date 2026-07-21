@@ -517,6 +517,11 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
 .is-style-fundido-oscuro > *, .is-style-fundido-superior > *, .is-style-fundido-ambos > * { position: relative; z-index: 2; }
 .is-style-fundido-oscuro > .wp-block-cover__image-background, .is-style-fundido-oscuro > .wp-block-cover__video-background, .is-style-fundido-oscuro > .wp-block-cover__background { z-index: 0 !important; }
 
+.is-style-fundido-oscuro > .wp-block-cover__image-background, .is-style-fundido-oscuro > .wp-block-cover__video-background, .is-style-fundido-oscuro > .wp-block-cover__background,
+.is-style-fundido-superior > .wp-block-cover__image-background, .is-style-fundido-superior > .wp-block-cover__video-background, .is-style-fundido-superior > .wp-block-cover__background,
+.is-style-fundido-ambos > .wp-block-cover__image-background, .is-style-fundido-ambos > .wp-block-cover__video-background, .is-style-fundido-ambos > .wp-block-cover__background { 
+    z-index: 0 !important; 
+}
 /* =========================================
    12. FOOTER Y CRÉDITOS
    ========================================= */
@@ -542,7 +547,7 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     margin-bottom: 5px; 
 }
 
-.seccion-creditos-final { width: 100% !important; max-width: 100% !important; padding: 80px 20px !important; margin: 0 !important; background-color: var(--wp--preset--color--light-gray) !important; display: block !important; }
+.seccion-creditos-final { width: 100% !important; max-width: 100% !important; padding: 80px 20px !important; margin: 0 !important; display: block !important; }
 .seccion-creditos-final .wp-block-group { max-width: 800px; margin: 0 auto; }
 
 /* =========================================

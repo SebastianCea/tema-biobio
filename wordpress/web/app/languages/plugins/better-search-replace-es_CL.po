@@ -1,0 +1,289 @@
+# Translation of Plugins - Better Search Replace - Stable (latest release) in Spanish (Chile)
+# This file is distributed under the same license as the Plugins - Better Search Replace - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-07-07 06:04:01+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: es_CL\n"
+"Project-Id-Version: Plugins - Better Search Replace - Stable (latest release)\n"
+
+#: templates/bsr-search-replace.php:33
+msgid "Dry Run Notice"
+msgstr "Aviso sobre la prueba de simulación"
+
+#: templates/bsr-help.php:75
+msgid "Download System Info"
+msgstr "Descargar información del sistema"
+
+#: includes/class-bsr-admin.php:293
+msgid "Sorry, you are not allowed to view this content."
+msgstr "Lo siento, no tienes permiso para ver este contenido."
+
+#: includes/class-bsr-admin.php:288
+msgid "Security check failed."
+msgstr "Ha fallado la comprobación de seguridad."
+
+#: includes/class-bsr-admin.php:176
+msgid "Search/Replace Details"
+msgstr "Detalles de Buscar/Reemplazar"
+
+#: includes/class-bsr-admin.php:162
+msgid "Dry Run Details"
+msgstr "Detalles de la prueba de simulación"
+
+#. translators: 1: Plugin name, 2: Required PHP version, 3: Current PHP version
+#: better-search-replace.php:166
+msgid "<strong>%1$s</strong> requires PHP <strong>%2$s</strong> or higher. You are currently running PHP <strong>%3$s</strong>. Please contact your web host to upgrade PHP to activate this plugin."
+msgstr "<strong>%1$s</strong> necesita PHP <strong>%2$s</strong> o una versión superior. Ahora mismo tienes instalado PHP <strong>%3$s</strong>. Ponte en contacto con tu proveedor de alojamiento web para actualizar PHP y poder activar este plugin."
+
+#. translators: 1: Plugin name, 2: Required WordPress version, 3: Current
+#. WordPress version
+#: better-search-replace.php:138
+msgid "<strong>%1$s</strong> requires WordPress <strong>%2$s</strong> or higher. You are currently running WordPress <strong>%3$s</strong>. Please upgrade WordPress to activate this plugin."
+msgstr "<strong>%1$s</strong> necesita WordPress <strong>%2$s</strong> o una versión superior. Ahora mismo tienes instalado WordPress <strong>%3$s</strong>. Actualiza WordPress para activar este plugin."
+
+#: includes/class-bsr-plugin-footer.php:94
+msgid "Feedback"
+msgstr "Comentarios"
+
+#: includes/class-bsr-plugin-footer.php:87
+msgid "Support"
+msgstr "Soporte"
+
+#: includes/class-bsr-plugin-footer.php:84
+msgid "Documentation"
+msgstr "Documentación"
+
+#. translators: %1$s is a link to BSR's website, and %2$s is a link to WP
+#. Engine's website.
+#: includes/class-bsr-plugin-footer.php:56
+msgid "%1$s is developed and maintained by %2$s."
+msgstr "%2$s desarrolla y mantiene %1$s."
+
+#. Author of the plugin
+#: better-search-replace.php
+msgid "WP Engine"
+msgstr "WP Engine"
+
+#: includes/class-bsr-admin.php:79
+msgid "Processing..."
+msgstr "Procesando..."
+
+#: templates/bsr-dashboard.php:87 templates/bsr-settings.php:34
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/class-bsr-admin.php:322
+msgid "Time"
+msgstr "Hora"
+
+#: templates/sidebar.php:49
+msgid "Upgrade Now"
+msgstr "Actualizar ahora"
+
+#: templates/sidebar.php:46
+msgid "Get up to <span>50% off</span> your first year!"
+msgstr "¡Consigue hasta un <span>50% de descuento</span> en tu primer año!"
+
+#: templates/sidebar.php:42
+msgid "Email support"
+msgstr "Soporte por correo electrónico"
+
+#: templates/sidebar.php:39
+msgid "Export and import WordPress databases"
+msgstr "Exporta e importa bases de datos de WordPress"
+
+#: templates/sidebar.php:36
+msgid "Migrate full sites including themes, plugins, media, and database"
+msgstr "Migración de sitios completos, incluyendo temas, plugins, medios y base de datos"
+
+#: templates/sidebar.php:33
+msgid "Use regular expressions for complex string replacements"
+msgstr "Usa expresiones regulares para reemplazar cadenas complejas"
+
+#: templates/sidebar.php:30
+msgid "Preview database changes before they are saved"
+msgstr "Previsualiza los cambios en la base de datos antes de guardarlos"
+
+#: templates/sidebar.php:26
+msgid "Gain access to more database and migration features"
+msgstr "Consigue acceso a más funciones de base de datos y de migración"
+
+#: templates/sidebar.php:25
+msgid "Upgrade"
+msgstr "Actualizar"
+
+#: templates/bsr-settings.php:47
+msgid "If you notice timeouts or are unable to backup/import the database, try decreasing this value."
+msgstr "Si recibes avisos de tiempo de espera o no puedes hacer una copia de seguridad/importación de la base de datos, intenta reducir este valor."
+
+#: templates/bsr-settings.php:43
+msgid "Max Page Size"
+msgstr "Tamaño máximo de página"
+
+#: templates/bsr-search-replace.php:125
+msgid "Run Search/Replace"
+msgstr "Ejecutar búsqueda/sustitución"
+
+#: templates/bsr-search-replace.php:114
+msgid "If checked, no changes will be made to the database, allowing you to check the results beforehand."
+msgstr "Si activas esta opción, no se realizará ningún cambio en la base de datos, lo cual te permite verificar los resultados de antemano."
+
+#: templates/bsr-search-replace.php:113
+msgid "Run as dry run"
+msgstr "Ejecutar como un simulacro"
+
+#: templates/bsr-search-replace.php:103
+msgid "If left unchecked, all database columns titled 'guid' will be skipped."
+msgstr "Si no activas esta opción, se omitirán todas las columnas de las bases de datos tituladas “guid”."
+
+#: templates/bsr-search-replace.php:102
+msgid "Replace GUIDs"
+msgstr "Reemplaza los GUID"
+
+#: templates/bsr-search-replace.php:92
+msgid "Searches are case-sensitive by default."
+msgstr "Las búsquedas distinguen entre mayúsculas y minúsculas por defecto."
+
+#: templates/bsr-search-replace.php:91
+msgid "Case-Insensitive"
+msgstr "Sin tener en cuenta mayúsculas/minúsculas"
+
+#: templates/bsr-search-replace.php:80
+msgid "Additional Settings"
+msgstr "Ajustes adicionales"
+
+#: templates/bsr-search-replace.php:68
+msgid "Select multiple tables with Ctrl-Click for Windows or Cmd-Click for Mac."
+msgstr "Elige varias tablas con Ctrl+Clic en Windows o Cmd+Clic en Mac."
+
+#: templates/bsr-search-replace.php:66
+msgid "Select tables"
+msgstr "Seleccionar tablas"
+
+#: templates/bsr-search-replace.php:58
+msgid "Replace with"
+msgstr "Sustituir con"
+
+#: templates/bsr-search-replace.php:53
+msgid "Search for"
+msgstr "Buscar"
+
+#: templates/bsr-search-replace.php:44
+msgid "Search and replace text in the database, including serialized arrays and objects. Be sure to back up your database before running this process."
+msgstr "Busca y reemplaza texto en la base de datos, incluyendo matrices y objetos serializados. Asegúrate de hacer una copia de seguridad de la base de datos antes de ejecutar este proceso."
+
+#: templates/bsr-help.php:66
+msgid "System Info"
+msgstr "Información del sistema"
+
+#. translators: %s: URL to the GitHub repository.
+#: templates/bsr-help.php:55
+msgid "Found a bug or have a feature request? Please submit an issue on <a href=\"%s\">GitHub</a>!"
+msgstr "¿Has encontrado un fallo o quieres hacer una petición de funcionalidades? Por favor, ¡envía un informe a <a href=\"%s\">GitHub</a>!"
+
+#: templates/bsr-help.php:33
+msgid "Help & Troubleshooting"
+msgstr "Ayuda y solución de problemas"
+
+#: templates/bsr-dashboard.php:88
+msgid "Help"
+msgstr "Ayuda"
+
+#: templates/bsr-dashboard.php:86 templates/bsr-search-replace.php:39
+msgid "Search/Replace"
+msgstr "Búsqueda/sustitución"
+
+#: templates/bsr-dashboard.php:74
+msgid "Upgrade now and get 50% off"
+msgstr "Actualiza ahora y obtén un 50% de descuento"
+
+#. translators: %d: database row number that failed to update.
+#: includes/class-bsr-db.php:341
+msgid "Error updating row: %d."
+msgstr "Error al actualizar la fila: %d."
+
+#. translators: %s: table size in megabytes.
+#: includes/class-bsr-db.php:93
+msgid "(%s MB)"
+msgstr "(%s MB)"
+
+#: includes/class-bsr-admin.php:413
+msgid "Upgrade to Pro"
+msgstr "Actualiza a Pro"
+
+#. translators: %s: URL to the upgrade page.
+#: includes/class-bsr-admin.php:337
+msgid "<a href=\"%s\" target=\"_blank\">UPGRADE</a> to view details on the exact changes that will be made."
+msgstr "<a href=\"%s\" target=\"_blank\">ACTUALIZA</a> para ver los detalles de los cambios exactos que se harán."
+
+#: includes/class-bsr-admin.php:321
+msgid "Rows Updated"
+msgstr "Filas actualizadas"
+
+#: includes/class-bsr-admin.php:320
+msgid "Changes Found"
+msgstr "Cambios encontrados"
+
+#: includes/class-bsr-admin.php:319
+msgid "Table"
+msgstr "Tabla"
+
+#: includes/class-bsr-admin.php:78
+msgid "An error occurred processing your request. Try decreasing the \"Max Page Size\", or contact support."
+msgstr "Ocurrió un error al procesar tu petición. Trata de disminuir el parámetro \"Max Page Size\" o contacta con el equipo de soporte."
+
+#: includes/class-bsr-admin.php:77
+msgid "Please select the tables that you want to update."
+msgstr "Por favor, selecciona las tablas que quieres actualizar."
+
+#: includes/class-bsr-admin.php:76
+msgid "No search string was defined, please enter a URL or string to search for."
+msgstr "No se ha definido ninguna cadena de búsqueda, por favor, escribe una URL o cadena que buscar."
+
+#. Description of the plugin
+#: better-search-replace.php
+msgid "A small plugin for running a search/replace on your WordPress database."
+msgstr "Un pequeño plugin para ejecutar una búsqueda/sustitución en tu base de datos de WordPress."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: better-search-replace.php
+msgid "https://bettersearchreplace.com"
+msgstr "https://bettersearchreplace.com"
+
+#. Plugin Name of the plugin
+#: better-search-replace.php includes/class-bsr-admin.php:92
+msgid "Better Search Replace"
+msgstr "Better Search Replace"
+
+#: includes/class-bsr-admin.php:355
+msgid " seconds"
+msgstr " segundos"
+
+#. translators: %s: URL to the upgrade page.
+#: templates/bsr-help.php:44
+msgid "<a href=\"%s\" style=\"font-weight:bold;\" target=\"_blank\" rel=\"noopener noreferrer\">Upgrade</a> to gain access to premium features and priority email support."
+msgstr "<a href=\"%s\" style=\"font-weight:bold;\" target=\"_blank\" rel=\"noopener noreferrer\">Actualiza</a> para obtener acceso a las características premium y a la asistencia prioritaria por correo electrónico."
+
+#. translators: 1: current table number, 2: total number of tables, 3: table
+#. name.
+#: includes/class-bsr-ajax.php:211
+msgid "Processing table %1$d of %2$d: %3$s"
+msgstr "Procesando tabla %1$d de %2$d: %3$s"
+
+#. translators: 1: tables searched, 2: cells changed, 3: updates, 4: details
+#. URL, 5: Thickbox title attribute.
+#: includes/class-bsr-admin.php:168
+msgid "<p>During the search/replace, <strong>%1$d</strong> tables were searched, with <strong>%2$d</strong> cells changed in <strong>%3$d</strong> updates.</p><p><a href=\"%4$s\" class=\"thickbox\" title=\"%5$s\">Click here</a> for more details.</p>"
+msgstr "<p>Durante la búsqueda y sustitución, se han realizado búsquedas en <strong>%1$d</strong> tablas, y se han modificado <strong>%2$d</strong> celdas en <strong>%3$d</strong> actualizaciones.</p><p><a href=\"%4$s\" class=\"thickbox\" title=\"%5$s\">Haz clic aquí</a> para ver más detalles.</p>"
+
+#. translators: 1: number of tables, 2: cells found, 3: changes made, 4:
+#. details URL, 5: Thickbox title attribute.
+#: includes/class-bsr-admin.php:154
+msgid "<p><strong>DRY RUN:</strong> <strong>%1$d</strong> tables were searched, <strong>%2$d</strong> cells were found that need to be updated, and <strong>%3$d</strong> changes were made.</p><p><a href=\"%4$s\" class=\"thickbox\" title=\"%5$s\">Click here</a> for more details, or use the form below to run the search/replace.</p>"
+msgstr "<p><strong>SIMULACRO:</strong> se han encontrado <strong>%1$d</strong>  tablas, <strong>%2$d</strong> celdas que necesitan actualizarse y se han hecho <strong>%3$d</strong> cambios.</p><p><a href=\"%4$s\" class=\"thickbox\" title=\"%5$s\">Haz clic aquí</a> para más detalles, o usa el formulario de abajo para ejecutar buscar/sustituir.</p>"
