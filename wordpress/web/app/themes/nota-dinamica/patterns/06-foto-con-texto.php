@@ -23,7 +23,7 @@
     <!-- wp:column {"className":"caja-media"} -->
     <div class="wp-block-column caja-media">
         <!-- wp:image -->
-        <figure class="wp-block-image"><img src="/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba2.jpg" alt="Sube tu imagen aquí"/></figure>
+        <figure class="wp-block-image"><img src="/app/themes/nota-dinamica/images/imagen-prueba2.jpg" alt="Sube tu imagen aquí"/></figure>
         <!-- /wp:image -->
     </div>
     <!-- /wp:column -->

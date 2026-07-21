@@ -13,15 +13,15 @@
     <figure class="wp-block-gallery has-nested-images columns-3 is-cropped galeria-dinamica">
         
         <!-- wp:image -->
-        <figure class="wp-block-image"><img src="/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba.png" alt="Foto 1"/></figure>
+        <figure class="wp-block-image"><img src="/app/themes/nota-dinamica/images/imagen-prueba.png" alt="Foto 1"/></figure>
         <!-- /wp:image -->
 
         <!-- wp:image -->
-        <figure class="wp-block-image"><img src="/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba2.jpg" alt="Foto 2"/></figure>
+        <figure class="wp-block-image"><img src="/app/themes/nota-dinamica/images/imagen-prueba2.jpg" alt="Foto 2"/></figure>
         <!-- /wp:image -->
 
         <!-- wp:image -->
-        <figure class="wp-block-image"><img src="/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba.png" alt="Foto 3"/></figure>
+        <figure class="wp-block-image"><img src="/app/themes/nota-dinamica/images/imagen-prueba.png" alt="Foto 3"/></figure>
         <!-- /wp:image -->
 
     </figure>

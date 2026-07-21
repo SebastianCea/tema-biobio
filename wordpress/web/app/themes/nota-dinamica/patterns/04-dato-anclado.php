@@ -6,7 +6,7 @@
  * Description: Imagen fija con cuadro de texto que flota al hacer scroll.
  */
 ?>
-<!-- wp:group {"className":"seccion-pin-corregida","style":{"background":{"backgroundImage":{"url":"http://localhost:8080/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba.png","source":"file","title":"Imagen de fondo"},"backgroundSize":"cover","backgroundPosition":"50% 50%"}},"layout":{"type":"default"}} -->
+<!-- wp:group {"className":"seccion-pin-corregida","style":{"background":{"backgroundImage":{"url":"/app/themes/nota-dinamica/images/imagen-prueba.png","source":"file","title":"Imagen de fondo"},"backgroundSize":"cover","backgroundPosition":"50% 50%"}},"layout":{"type":"default"}} -->
 <div class="wp-block-group seccion-pin-corregida">
 
 <!-- wp:group {"className":"contenedor-del-cuadro","layout":{"type":"default"}} -->

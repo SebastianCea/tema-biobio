@@ -9,7 +9,7 @@
 <!-- wp:group {"className":"contenedor-perfil","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
 <div class="wp-block-group contenedor-perfil"><!-- wp:group {"className":"perfil-periodista-horizontal","style":{"color":{"background":"#ffffff"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
 <div class="wp-block-group perfil-periodista-horizontal has-background" style="background-color:#ffffff"><!-- wp:image {"className":"foto-periodista"} -->
-<figure class="wp-block-image foto-periodista"><img src="/wordpress/wp-content/themes/tema-biobio/images/imagen-prueba2.jpg" alt="Foto del periodista"/></figure>
+<figure class="wp-block-image foto-periodista"><img src="/app/themes/nota-dinamica/images/imagen-prueba2.jpg" alt="Foto del periodista"/></figure>
 <!-- /wp:image -->
 <!-- wp:group {"className":"info-periodista","layout":{"type":"default"}} -->
 <div class="wp-block-group info-periodista"><!-- wp:paragraph {"className":"nombre-periodista"} -->
