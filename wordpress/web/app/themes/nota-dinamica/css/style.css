@@ -637,3 +637,150 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     main.contenido-principal .seccion-video-full video, main.contenido-principal .seccion-video-full iframe { position: absolute; width: 100%; height: 100%; transform: scale(1.3); z-index: 1; }
     .bloque-editorial.variante-mixto.texto-izquierda, .bloque-editorial.variante-mixto.texto-derecha { flex-direction: column; }
 }
+
+
+/* =========================================
+   ESTILOS PORTADA PERIODÍSTICA
+   ========================================= */
+.portada-periodistica {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 1. Lead Story (Destacada) */
+.seccion-lead-story {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 40px;
+}
+
+.contenedor-lead {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.imagen-lead img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 450px;
+}
+
+.etiqueta-categoria {
+    background-color: #004687;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.titulo-lead a {
+    font-family: 'Merriweather', serif;
+    font-size: 2.3rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    line-height: 1.2;
+    transition: color 0.2s ease;
+}
+
+.titulo-lead a:hover {
+    color: #004687;
+}
+
+.extracto-lead {
+    font-size: 1.05rem;
+    color: #555555;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.enlace-leer-mas {
+    font-weight: bold;
+    color: #004687;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.enlace-leer-mas:hover {
+    text-decoration: underline;
+}
+
+/* 2. Grilla Secundaria (Últimas Coberturas) */
+.contenedor-grilla-header h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    border-left: 5px solid #004687;
+    padding-left: 12px;
+}
+
+.grilla-secundaria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.tarjeta-noticia {
+    display: flex;
+    flex-direction: column;
+    background: #fafafa;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-noticia:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.tarjeta-imagen img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.tarjeta-contenido {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.tarjeta-titulo a {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    line-height: 1.35;
+}
+
+.tarjeta-titulo a:hover {
+    color: #004687;
+}
+
+.fecha-tarjeta {
+    font-size: 0.8rem;
+    color: #888888;
+    margin-top: auto;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 900px) {
+    .contenedor-lead {
+        grid-template-columns: 1fr;
+    }
+    .grilla-secundaria {
+        grid-template-columns: 1fr;
+    }
+}
