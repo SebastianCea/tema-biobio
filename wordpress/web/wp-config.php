@@ -131,8 +131,8 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
 // Definir la carpeta de contenido personalizada
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/app' );
 define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/app' );
-define( 'WP_HOME', 'http://tu-url-de-desarrollo.cl' );
-define( 'WP_SITEURL', 'http://tu-url-de-desarrollo.cl' );
+define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
+define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
