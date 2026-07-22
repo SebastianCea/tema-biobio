@@ -101,6 +101,21 @@ body .header-principal {
 
 .header-principal .icono-red:hover { transform: scale(1.2); }
 
+/* Iconos estructurales del header (redes sociales, buscador, botón hamburguesa) según tema */
+.header-principal[data-tema="claro"] .burger-btn,
+.header-principal[data-tema="claro"] .search-icon,
+.header-principal[data-tema="claro"] .rrss-menu a {
+    color: #000000 !important;
+}
+.header-principal[data-tema="oscuro"] .burger-btn,
+.header-principal[data-tema="oscuro"] .search-icon,
+.header-principal[data-tema="oscuro"] .rrss-menu a {
+    color: #ffffff !important;
+}
+
+.header-principal[data-tema="claro"] .header-divider { background: rgba(0, 0, 0, 0.2); }
+.header-principal[data-tema="oscuro"] .header-divider { background: rgba(255, 255, 255, 0.2); }
+
 body.wp-singular .header-principal,
 body.single .header-principal,
 body.logged-in .header-principal {
@@ -659,26 +674,28 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
 }
 
 
-/* =========================================
-   PORTADA PERIODÍSTICA AVANZADA
-   ========================================= */
-.portada-periodistica {
+/* =========================================================================
+   15. PORTADA (SOLO PÁGINA DE INICIO) — TODO ESCOPADO BAJO body.home
+   Nada de este bloque debe afectar notas ni ninguna otra página.
+   ========================================================================= */
+
+.home .portada-periodistica {
     max-width: 1300px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* 1. Grid Superior: Lead + Últimas Notas */
-.grid-portada-principal {
+/* Grid Superior: Lead + Últimas Notas */
+.home .grid-portada-principal {
     display: grid;
     grid-template-columns: 2.2fr 1fr;
     gap: 40px;
     margin-bottom: 50px;
-    border-bottom: 2px solid #eaeaea;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     padding-bottom: 40px;
 }
 
-.columna-lead .imagen-lead img {
+.home .columna-lead .imagen-lead img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -686,8 +703,8 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     max-height: 420px;
 }
 
-.etiqueta-categoria {
-    background-color: #004687;
+.home .etiqueta-categoria {
+    background-color: #005bb5;
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
@@ -698,89 +715,82 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     margin: 15px 0 10px 0;
 }
 
-.titulo-lead a {
+.home .titulo-lead a {
     font-family: 'Merriweather', serif;
     font-size: 2.2rem;
-    color: #1a1a1a;
+    color: #ffffff !important;
     text-decoration: none;
     line-height: 1.2;
+    transition: color 0.3s ease;
 }
+.home .titulo-lead a:hover { color: #66b3ff !important; }
 
-.titulo-lead a:hover {
-    color: #004687;
-}
-
-.extracto-lead {
+.home .extracto-lead {
     font-size: 1.05rem;
-    color: #555555;
+    color: #cccccc !important;
     margin: 12px 0;
     line-height: 1.5;
 }
 
-.fecha-lead {
+.home .fecha-lead,
+.home .fecha-item {
     font-size: 0.85rem;
-    color: #888888;
+    color: #cccccc !important;
+    display: block;
+    margin-top: 4px;
 }
 
 /* Sidebar de Últimas Notas */
-.columna-ultimas-notas {
-    border-left: 1px solid #eaeaea;
+.home .columna-ultimas-notas {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
     padding-left: 30px;
 }
 
-.header-ultimas h3 {
+.home .header-ultimas h3 {
     font-family: 'Merriweather', serif;
     font-size: 1.3rem;
     margin-bottom: 20px;
-    border-bottom: 2px solid #1a1a1a;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     padding-bottom: 8px;
+    color: #ffffff;
 }
 
-.lista-ultimas {
+.home .lista-ultimas {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.item-ultima-nota {
+.home .item-ultima-nota {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-.miniatura-ultima img {
+.home .miniatura-ultima img {
     width: 80px;
     height: 65px;
     object-fit: cover;
     border-radius: 4px;
 }
 
-.texto-ultima h4 a {
+.home .texto-ultima h4 a {
     font-family: 'Merriweather', serif;
     font-size: 0.95rem;
-    color: #1a1a1a;
+    color: #ffffff !important;
     text-decoration: none;
     line-height: 1.3;
+    transition: color 0.3s ease;
 }
+.home .texto-ultima h4 a:hover { color: #66b3ff !important; }
 
-.texto-ultima h4 a:hover {
-    color: #004687;
-}
-
-.fecha-item {
-    font-size: 0.75rem;
-    color: #888888;
-    display: block;
-    margin-top: 4px;
-}
-
-/* 2. Sección de Publicidad */
-.seccion-publicidad {
+/* Sección de Publicidad */
+.home .seccion-publicidad {
     margin: 40px 0;
     text-align: center;
 }
 
-.contenedor-ad {
+.home .contenedor-ad {
     background-color: #f4f4f4;
     border: 2px dashed #cccccc;
     padding: 30px;
@@ -792,310 +802,150 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     letter-spacing: 1px;
 }
 
-/* 3. Secciones por Categoría */
-.seccion-categoria-bloque {
+/* Secciones por Categoría */
+.home .seccion-categoria-bloque {
     margin-bottom: 50px;
 }
 
-.header-seccion-cat {
+.home .header-seccion-cat {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 3px solid #004687;
+    border-bottom: 3px solid #ffffff;
     padding-bottom: 8px;
     margin-bottom: 25px;
 }
 
-.header-seccion-cat h2 {
+.home .header-seccion-cat h2 {
     font-family: 'Merriweather', serif;
     font-size: 1.6rem;
-    color: #1a1a1a;
+    color: #ffffff;
     margin: 0;
 }
 
-.ver-mas {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #004687;
-    text-decoration: none;
-}
-.ver-mas:hover {
-    text-decoration: underline;
-}
+.home .ver-mas { color: #66b3ff !important; font-size: 0.9rem; font-weight: bold; text-decoration: none; }
+.home .ver-mas:hover { color: #99ccff !important; text-decoration: underline; }
 
-.grilla-categoria {
+.home .grilla-categoria {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
 
-.tarjeta-categoria-item {
-    background: #fafafa;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+/* Notas sin recuadro blanco (fondo oscuro de portada) */
+.home .tarjeta-noticia,
+.home .tarjeta-categoria-item,
+.home .noticia-lead-principal {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
 }
 
-.imagen-cat-item img {
+.home .imagen-cat-item img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     display: block;
 }
 
-.contenido-cat-item {
-    padding: 18px;
+.home .contenido-cat-item {
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.contenido-cat-item h3 a {
+.home .contenido-cat-item h3 a {
     font-family: 'Merriweather', serif;
     font-size: 1.15rem;
-    color: #1a1a1a;
+    color: #ffffff !important;
     text-decoration: none;
     line-height: 1.3;
+    transition: color 0.3s ease;
 }
+.home .contenido-cat-item h3 a:hover { color: #66b3ff !important; }
 
-.contenido-cat-item h3 a:hover {
-    color: #004687;
-}
-
-.contenido-cat-item p {
+.home .contenido-cat-item p {
     font-size: 0.9rem;
-    color: #666666;
+    color: #cccccc !important;
     margin: 10px 0 15px 0;
     line-height: 1.4;
     flex-grow: 1;
 }
 
-/* Responsivo para móviles y tablets */
-@media (max-width: 900px) {
-    .grid-portada-principal {
-        grid-template-columns: 1fr;
-    }
-    .columna-ultimas-notas {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid #eaeaea;
-        padding-top: 30px;
-    }
-    .grilla-categoria {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================================
-   COLORES Y FONDOS (ESTILO BIOBIO SIN TARJETAS BLANCAS)
-   ========================================= */
-
-/* 1. Fondo general azul y limpieza de márgenes blancos extraños */
-body, html, .wp-site-blocks {
-    background-color: #022c54 !important; /* Azul BioBio */
+/* Fondo general azul BioBio y estructura, SOLO portada */
+.home,
+.home .wp-site-blocks {
+    background-color: #022c54 !important;
     color: #ffffff !important;
     margin: 0 !important;
 }
 
-/* 2. Forzar Header, Footer y sus contenedores internos a ser Azul Marino */
-header, .site-header, header div, header section, header aside,
-footer, .site-footer, footer div, footer section, footer aside {
-    background-color: #01162a !important; 
+.home header, .home .site-header, .home header div, .home header section, .home header aside,
+.home footer, .home .site-footer, .home footer div, .home footer section, .home footer aside {
+    background-color: #01162a !important;
     border: none !important;
 }
 
-/* Quitar márgenes blancos superiores del tema de bloques */
-.wp-site-blocks > header {
+.home .wp-site-blocks > header {
     margin-top: 0 !important;
     max-width: 100% !important;
 }
 
-/* 3. CONVERTIR LOGO OSCURO A BLANCO (Filtro CSS) */
-header img, .custom-logo, .site-logo img {
+.home header img, .home .custom-logo, .home .site-logo img {
     filter: brightness(0) invert(1) !important;
 }
 
-/* Íconos y enlaces estructurales del Header y Footer en blanco */
-header, footer, header p, footer p, header a, footer a, header span, footer span, header li, footer li, .site-title a {
+.home header, .home footer,
+.home header p, .home footer p,
+.home header a, .home footer a,
+.home header span, .home footer span,
+.home header li, .home footer li,
+.home .site-title a {
     color: #ffffff !important;
     text-decoration: none !important;
 }
-header svg, footer svg { fill: #ffffff !important; color: #ffffff !important; }
-header i, footer i, header .fa, footer .fa, header .dashicons, footer .dashicons { color: #ffffff !important; }
+.home header svg, .home footer svg { fill: #ffffff !important; color: #ffffff !important; }
+.home header i, .home footer i, .home header .fa, .home footer .fa, .home header .dashicons, .home footer .dashicons { color: #ffffff !important; }
 
-/* 4. Textos estructurales (Títulos de sección en blanco) */
-.contenedor-grilla-header h2,
-.header-seccion-cat h2,
-.header-ultimas h3,
-.fecha-item {
-    color: #ffffff !important;
-}
+.home .contenedor-grilla-header h2 { color: #ffffff !important; }
 
-/* Líneas separadoras */
-.grid-portada-principal { border-bottom: 2px solid rgba(255, 255, 255, 0.15); }
-.header-seccion-cat { border-bottom: 3px solid #ffffff; }
-.header-ultimas h3 { border-bottom: 2px solid rgba(255, 255, 255, 0.15); }
-
-/* =========================================
-   5. DISEÑO DE NOTAS LÍMPIAS (SIN RECUADRO BLANCO)
-   ========================================= */
-.tarjeta-noticia, 
-.tarjeta-categoria-item,
-.noticia-lead-principal {
-    background-color: transparent !important; /* Quita el fondo blanco */
-    box-shadow: none !important; /* Quita la sombra */
-    border-radius: 0 !important; 
-    padding: 0 !important; /* Quita el relleno blanco que rodeaba la foto */
-}
-
-/* Todos los títulos de las notas en BLANCO */
-.tarjeta-titulo a, 
-.contenido-cat-item h3 a, 
-.texto-ultima h4 a,
-.titulo-lead a {
-    color: #ffffff !important;
-    transition: color 0.3s ease;
-}
-
-/* Efecto hover en los títulos (Celeste claro) */
-.tarjeta-titulo a:hover, 
-.contenido-cat-item h3 a:hover, 
-.texto-ultima h4 a:hover,
-.titulo-lead a:hover {
-    color: #66b3ff !important;
-}
-
-/* Extractos y fechas en gris claro para contrastar suavemente con el fondo oscuro */
-.contenido-cat-item p, 
-.fecha-tarjeta,
-.extracto-lead,
-.fecha-lead {
-    color: #cccccc !important; 
-}
-
-/* Ajuste de etiqueta "Destacado" */
-.etiqueta-categoria {
-    background-color: #005bb5;
-    color: #ffffff;
-    margin-top: 15px; /* Separación con la imagen */
-}
-
-/* Enlaces de "Ver más" */
-.ver-mas { color: #66b3ff !important; }
-.ver-mas:hover { color: #99ccff !important; }
-
-
-/* =========================================
-   6. EFECTO ZOOM EN IMÁGENES (HOVER)
-   ========================================= */
-
-/* Contenedor estricto para que la imagen no se desborde al hacer zoom */
-.imagen-lead, .miniatura-ultima, .imagen-cat-item {
+/* Efecto zoom en imágenes de portada (hover) */
+.home .imagen-lead, .home .miniatura-ultima, .home .imagen-cat-item {
     overflow: hidden;
-    border-radius: 6px; /* Borde leve a la foto, se ve muy profesional */
+    border-radius: 6px;
     display: block;
 }
-
-/* La imagen en estado normal con transición preparada */
-.imagen-lead img, .miniatura-ultima img, .imagen-cat-item img {
-    transition: transform 0.4s ease; /* Duración y suavidad del efecto */
-    display: block;
-    width: 100%;
-}
-
-/* El efecto Zoom que se activa al pasar el mouse sobre toda la nota */
-.noticia-lead-principal:hover .imagen-lead img,
-.item-ultima-nota:hover .miniatura-ultima img,
-.tarjeta-categoria-item:hover .imagen-cat-item img {
-    transform: scale(1.08); /* Aumenta un 8% el tamaño hacia el usuario */
-}
-
-/* =========================================
-   PORTADA PERIODÍSTICA (DISEÑO LIMPIO EN OSCURO)
-   ========================================= */
-.portada-periodistica { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
-
-/* Grid Superior y Separadores */
-.grid-portada-principal { display: grid; grid-template-columns: 2.2fr 1fr; gap: 40px; margin-bottom: 50px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); padding-bottom: 40px; }
-.columna-ultimas-notas { border-left: 1px solid rgba(255, 255, 255, 0.15); padding-left: 30px; }
-.header-ultimas h3 { font-family: 'Merriweather', serif; font-size: 1.3rem; margin-bottom: 20px; border-bottom: 2px solid rgba(255, 255, 255, 0.15); padding-bottom: 8px; color: #ffffff; }
-.header-seccion-cat { border-bottom: 3px solid #ffffff; padding-bottom: 8px; margin-bottom: 25px; }
-.header-seccion-cat h2 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: #ffffff; margin: 0; }
-.seccion-categoria-bloque { margin-bottom: 50px; }
-
-/* DISEÑO DE NOTAS SIN RECUADRO BLANCO */
-.tarjeta-noticia, .tarjeta-categoria-item, .noticia-lead-principal {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-}
-
-/* Todos los títulos de notas en BLANCO */
-.tarjeta-titulo a, .contenido-cat-item h3 a, .texto-ultima h4 a, .titulo-lead a {
-    color: #ffffff !important;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Efecto hover en los títulos (Celeste claro) */
-.tarjeta-titulo a:hover, .contenido-cat-item h3 a:hover, .texto-ultima h4 a:hover, .titulo-lead a:hover {
-    color: #66b3ff !important;
-}
-
-/* Extractos y fechas en gris claro */
-.contenido-cat-item p, .fecha-tarjeta, .extracto-lead, .fecha-lead, .fecha-item {
-    color: #cccccc !important; 
-}
-
-/* Ajustes tipográficos específicos */
-.titulo-lead a { font-family: 'Merriweather', serif; font-size: 2.2rem; line-height: 1.2; }
-.extracto-lead { font-size: 1.05rem; margin: 12px 0; line-height: 1.5; }
-.texto-ultima h4 a { font-family: 'Merriweather', serif; font-size: 0.95rem; line-height: 1.3; }
-.contenido-cat-item h3 a { font-family: 'Merriweather', serif; font-size: 1.15rem; line-height: 1.3; }
-.contenido-cat-item p { font-size: 0.9rem; margin: 10px 0 15px 0; line-height: 1.4; flex-grow: 1; }
-.fecha-item { font-size: 0.75rem; display: block; margin-top: 4px; }
-.etiqueta-categoria { background-color: #005bb5; color: #ffffff; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; display: inline-block; margin: 15px 0 10px 0; }
-
-/* Contenedores de las notas laterales y categorías */
-.lista-ultimas { display: flex; flex-direction: column; gap: 20px; }
-.item-ultima-nota { display: flex; gap: 15px; align-items: center; }
-.grilla-categoria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-.contenido-cat-item { padding-top: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-
-/* EFECTO ZOOM PROFESIONAL EN IMÁGENES (HOVER) */
-.imagen-lead, .miniatura-ultima, .imagen-cat-item {
-    overflow: hidden;
-    border-radius: 6px; 
-    display: block;
-}
-.imagen-lead img, .miniatura-ultima img, .imagen-cat-item img {
+.home .imagen-lead img, .home .miniatura-ultima img, .home .imagen-cat-item img {
     transition: transform 0.4s ease;
     display: block;
     width: 100%;
     object-fit: cover;
 }
-.imagen-lead img { max-height: 420px; }
-.miniatura-ultima img { width: 80px; height: 65px; }
-.imagen-cat-item img { height: 180px; }
-
-.noticia-lead-principal:hover .imagen-lead img,
-.item-ultima-nota:hover .miniatura-ultima img,
-.tarjeta-categoria-item:hover .imagen-cat-item img {
+.home .noticia-lead-principal:hover .imagen-lead img,
+.home .item-ultima-nota:hover .miniatura-ultima img,
+.home .tarjeta-categoria-item:hover .imagen-cat-item img {
     transform: scale(1.08);
 }
 
-/* Responsivo */
+/* Responsivo de la portada */
 @media (max-width: 900px) {
-    .grid-portada-principal { grid-template-columns: 1fr; }
-    .columna-ultimas-notas { border-left: none; padding-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 30px; }
-    .grilla-categoria { grid-template-columns: 1fr; }
+    .home .grid-portada-principal { grid-template-columns: 1fr; }
+    .home .columna-ultimas-notas {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 30px;
+    }
+    .home .grilla-categoria { grid-template-columns: 1fr; }
 }
 
 /* =========================================
-   ESTILOS RESPONSIVOS DEL HEADER (SOCIALES)
+   16. ESTILOS RESPONSIVOS DEL HEADER (SOCIALES)
+   Aplica a todo el sitio (header compartido header.php)
    ========================================= */
 @media (max-width: 768px) {
     /* Mostrar botón hamburguesa y ocultar redes/buscador de escritorio */

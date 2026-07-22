@@ -65,7 +65,6 @@ $color_header_rgba = "rgba($hr, $hg, $hb, 0.95)";
             display: none;
             background: none;
             border: none;
-            color: #fff;
             font-size: 1.4rem;
             cursor: pointer;
             z-index: 100;
@@ -98,10 +97,10 @@ $color_header_rgba = "rgba($hr, $hg, $hb, 0.95)";
     <header class="header-principal" data-tema="<?php echo esc_attr($tema_header); ?>" style="background-color: <?php echo esc_attr($color_header_rgba); ?> !important;">
         <div class="contenedor-header">
             
-            <!-- Logo principal al centro -->
+            <!-- Logo principal al centro: el filtro (blanco/original) lo decide style.css según data-tema -->
             <div class="logo-sitio">
                 <a href="<?php echo home_url('/'); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/logo-biobio.png" alt="BioBioChile" class="imagen-logo" style="height: 25px; width: auto; filter: brightness(0) invert(1);">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/logo-biobio.png" alt="BioBioChile" class="imagen-logo" style="height: 25px; width: auto;">
                 </a>
             </div>
 
@@ -120,19 +119,19 @@ $color_header_rgba = "rgba($hr, $hg, $hb, 0.95)";
                     </form>
                 </div>
 
-                <button class="search-icon" id="searchToggle" style="background: none; border: none; color: #fff; font-size: 1.1rem; cursor: pointer;" title="Buscar">
+                <button class="search-icon" id="searchToggle" style="background: none; border: none; font-size: 1.1rem; cursor: pointer;" title="Buscar">
                     <i class="fal fa-search"></i>
                 </button>
 
-                <span class="header-divider" style="width: 1px; height: 18px; background: rgba(255,255,255,0.2);"></span>
+                <span class="header-divider" style="width: 1px; height: 18px;"></span>
 
-                <!-- Redes sociales con efecto zoom integrado -->
+                <!-- Redes sociales con efecto zoom integrado: el color lo decide style.css según data-tema -->
                 <nav class="rrss-menu" style="display: flex; gap: 22px; align-items: center;">
-                    <a href="https://www.facebook.com/RadioBioBio" target="_blank" style="color: #fff; font-size: 0.9rem; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/biobio" target="_blank" style="color: #fff; font-size: 0.9rem; text-decoration: none;"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/biobiochile/" target="_blank" style="color: #fff; font-size: 0.9rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCuvM3c8rmdApmk-g22shZ7w" target="_blank" style="color: #fff; font-size: 0.9rem; text-decoration: none;"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/biobiochile/" target="_blank" style="color: #fff; font-size: 0.9rem; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/RadioBioBio" target="_blank" style="font-size: 0.9rem; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/biobio" target="_blank" style="font-size: 0.9rem; text-decoration: none;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/biobiochile/" target="_blank" style="font-size: 0.9rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCuvM3c8rmdApmk-g22shZ7w" target="_blank" style="font-size: 0.9rem; text-decoration: none;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/biobiochile/" target="_blank" style="font-size: 0.9rem; text-decoration: none;"><i class="fab fa-linkedin-in"></i></a>
                 </nav>
 
             </div>
@@ -142,7 +141,7 @@ $color_header_rgba = "rgba($hr, $hg, $hb, 0.95)";
     <!-- Overlay oscuro para menú móvil -->
     <div id="menuOverlay" class="menu-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 1050;"></div>
 
-    <!-- Menú lateral deslizable (Móvil) -->
+    <!-- Menú lateral deslizable (Móvil): se mantiene siempre oscuro, es un panel propio, no hereda el tema del header -->
     <div id="sideMenu" class="side-menu" style="position: fixed; top: 0; right: -300px; width: 280px; height: 100vh; background: #01162a; z-index: 1100; transition: right 0.3s ease; box-shadow: -5px 0 25px rgba(0,0,0,0.5); padding: 25px; display: flex; flex-direction: column; gap: 25px;">
         
         <div class="side-menu-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 15px;">
