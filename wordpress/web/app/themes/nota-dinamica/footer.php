@@ -1,33 +1,16 @@
-<?php 
-// Lógica exclusiva para el FOOTER
-$color_footer = '#ffffff';
-$tema_footer = 'claro';
+<footer style="width: 100%; background-color: #01162a; border-top: 1px solid rgba(255, 255, 255, 0.15); padding: 30px 0; text-align: center; margin-top: auto;">
+        <div class="bbcl-footer-logo" style="margin-bottom: 15px;">
+            <a href="https://www.biobiochile.cl/" target="_blank">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/biobio.png" alt="bbcl-footer-logo" style="height: 25px; width: auto; filter: brightness(0) invert(1);">
+            </a>
+        </div>
+        <div class="footer-text mx-auto" style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; font-family: 'Roboto', sans-serif;">
+            Desarrollado por Bío Bío Comunicaciones 
+            <br>
+            Concepción - Chile
+        </div>
+    </footer>
 
-if ( is_singular() ) {
-    $color_guardado_footer = get_post_meta(get_the_ID(), '_color_footer', true);
-    if (!empty($color_guardado_footer)) {
-        $color_footer = $color_guardado_footer;
-    }
-}
-
-if (function_exists('biobio_calcular_luminancia')) {
-    $tema_footer = biobio_calcular_luminancia($color_footer);
-}
-
-list($fr, $fg, $fb) = sscanf($color_footer, "#%02x%02x%02x");
-$color_footer_rgba = "rgba($fr, $fg, $fb, 1)"; 
-?>
-
-<footer class="footer-biobio" data-tema="<?php echo esc_attr($tema_footer); ?>" style="background-color: <?php echo esc_attr($color_footer_rgba); ?> !important;">
-    <div class="footer-contenido">
-        
-        <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/biobio.png" alt="BioBioChile" class="logo-footer">
-        
-        <p class="texto-footer">© <?php echo date('Y'); ?> BioBioChile - Todos los derechos reservados</p>
-        
-    </div>
-</footer>
-
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 </body>
 </html>

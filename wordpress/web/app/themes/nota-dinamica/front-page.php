@@ -1,169 +1,144 @@
 <?php
 /**
- * Template Name: Portada Estilo Diario (Home)
- * Description: Portada avanzada estructurada. (Sin afectar header/footer global)
+ * Template Name: Portada Estilo Sociales
+ * Description: Portada con carrusel Swiper responsivo y logo ajustado en la parte superior.
  */
 
-get_header(); 
+if ( is_404() ) {
+    status_header(404);
+    get_template_part( '404' );
+    exit;
+}
 ?>
 
-<!-- SCRIPT PARA FORZAR MODO OSCURO SOLO EN LA PORTADA -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Pintar el fondo del body de azul oscuro
-    document.body.style.setProperty('background-color', '#022c54', 'important');
-    
-    // Forzar header a modo oscuro
-    const header = document.querySelector('.header-principal');
-    if(header) {
-        header.style.setProperty('background-color', 'rgba(1, 22, 42, 0.95)', 'important');
-        header.setAttribute('data-tema', 'oscuro');
+<?php get_header(); ?>
+
+<style>
+    /* Estilos del carrusel y tarjetas */
+    .evento-card-wrapper {
+        background: #01162a;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-    
-    // Forzar footer a modo oscuro
-    const footer = document.querySelector('.footer-biobio');
-    if(footer) {
-        footer.style.setProperty('background-color', 'rgba(1, 22, 42, 1)', 'important');
-        footer.setAttribute('data-tema', 'oscuro');
+    .evento-img-container {
+        overflow: hidden;
+        height: 180px;
+        width: 100%;
     }
-});
-</script>
+    .evento-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    .evento-card-wrapper:hover .evento-img-container img {
+        transform: scale(1.08); /* Efecto Zoom */
+    }
+    .evento-nombre-texto {
+        font-family: 'Merriweather', serif;
+        font-size: 1rem;
+        color: #ffffff;
+        font-weight: bold !important; /* Título en negrita */
+        margin: 0;
+        line-height: 1.3;
+    }
+    .swiper-slide {
+        height: auto;
+    }
+</style>
 
-<main class="contenido-principal portada-periodistica">
+<!-- Librería CSS de Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
-    <!-- =========================================
-       1. SECCIÓN SUPERIOR: DESTACADA + ÚLTIMAS NOTAS
-       ========================================= -->
-    <div class="grid-portada-principal">
-        
-        <!-- Columna Izquierda: Noticia Destacada -->
-        <div class="columna-lead">
-            <?php
-            $args_lead = array('posts_per_page' => 1, 'post_status' => 'publish');
-            $query_lead = new WP_Query($args_lead);
+<!-- padding-top reducido a 65px para acercarlo más al header fijo -->
+<main class="main-layout portada-sociales-estilo" style="padding-top: 65px; min-height: calc(100vh - 100px); display: flex; flex-direction: column; justify-content: center;">
 
-            if ($query_lead->have_posts()) :
-                while ($query_lead->have_posts()) : $query_lead->the_post();
-                    $content = apply_filters('the_content', get_the_content());
-                    preg_match('/<p[^>]*>(.*?)<\/p>/is', $content, $matches_p);
-                    $primer_texto = !empty($matches_p[1]) ? strip_tags($matches_p[1]) : get_the_excerpt();
-                    
-                    preg_match('/<h[1-3][^>]*>(.*?)<\/h[1-3]>/is', $content, $matches_h);
-                    $titulo_nota = !empty($matches_h[1]) ? strip_tags($matches_h[1]) : get_the_title();
-            ?>
-                <article class="noticia-lead-principal">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <div class="imagen-lead">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_post_thumbnail('large'); ?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                    <div class="info-lead">
-                        <span class="etiqueta-categoria">Destacado</span>
-                        <h1 class="titulo-lead">
-                            <a href="<?php the_permalink(); ?>"><?php echo esc_html($titulo_nota); ?></a>
-                        </h1>
-                        <p class="extracto-lead"><?php echo wp_trim_words($primer_texto, 25); ?></p>
-                        <span class="fecha-lead"><?php echo get_the_date(); ?></span>
-                    </div>
-                </article>
-            <?php 
-                endwhile;
-                wp_reset_postdata();
-            endif;
-            ?>
+    <div class="main-content" style="width: 100%; padding: 20px 0;">
+
+        <!-- Logo / Imagen de portada: Más grande (60px), blanca y centrada -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/bbcl-logo.svg" alt="Logo Portada" style="height: 60px; width: auto; filter: brightness(0) invert(1); display: inline-block;">
         </div>
 
-        <!-- Columna Derecha: Últimas Notas -->
-        <aside class="columna-ultimas-notas">
-            <div class="header-ultimas">
-                <h3>Últimas Notas</h3>
-            </div>
-            <div class="lista-ultimas">
-                <?php
-                $args_ultimas = array('posts_per_page' => 4, 'offset' => 1, 'post_status' => 'publish');
-                $query_ultimas = new WP_Query($args_ultimas);
+        <div class="text-revisa-los-ultimos mx-auto" style="text-align: center; font-size: 1.5rem; font-family: 'Merriweather', serif; color: #ffffff; margin-bottom: 30px;">
+            <strong>Revisa las últimas notas</strong>
+        </div>
 
-                if ($query_ultimas->have_posts()) :
-                    while ($query_ultimas->have_posts()) : $query_ultimas->the_post();
-                        $content = apply_filters('the_content', get_the_content());
-                        preg_match('/<h[1-3][^>]*>(.*?)<\/h[1-3]>/is', $content, $matches_h);
-                        $titulo_nota = !empty($matches_h[1]) ? strip_tags($matches_h[1]) : get_the_title();
-                ?>
-                    <div class="item-ultima-nota">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="miniatura-ultima">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail('thumbnail'); ?>
-                                </a>
+        <!-- CARRUSEL DE NOTAS RESPONSIVO -->
+        <section class="eventos-section" style="max-width: 1300px; margin: 0 auto; padding: 0 20px;">
+            <div class="swiper eventos-swiper">
+                <div class="swiper-wrapper">
+
+                    <?php
+                    $eventos = new WP_Query([
+                        'post_type'      => 'post',
+                        'posts_per_page' => 10,
+                        'post_status'    => 'publish'
+                    ]);
+
+                    if ($eventos->have_posts()):
+                        while ($eventos->have_posts()):
+                            $eventos->the_post();
+
+                            $content = apply_filters('the_content', get_the_content());
+                            preg_match('/<h[1-3][^>]*>(.*?)<\/h[1-3]>/is', $content, $matches_h);
+                            $titulo_nota = !empty($matches_h[1]) ? strip_tags($matches_h[1]) : get_the_title();
+
+                            if (has_post_thumbnail()) {
+                                $img = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                            } else {
+                                $img = get_template_directory_uri() . '/assets/img/default-evento.png';
+                            }
+                    ?>
+                            <div class="swiper-slide">
+                                <div class="evento-card-wrapper">
+                                    <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                                        <div class="evento-img-container">
+                                            <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($titulo_nota); ?>">
+                                        </div>
+                                        <div style="padding: 15px; flex-grow: 1; display: flex; align-items: center;">
+                                            <p class="evento-nombre-texto"><?php echo esc_html($titulo_nota); ?></p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        <?php endif; ?>
-                        <div class="texto-ultima">
-                            <h4><a href="<?php the_permalink(); ?>"><?php echo esc_html($titulo_nota); ?></a></h4>
-                            <span class="fecha-item"><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' atrás'; ?></span>
-                        </div>
-                    </div>
-                <?php 
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
-            </div>
-        </aside>
-    </div>
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                        echo "<p style='text-align:center; color:#fff;'>No hay notas disponibles.</p>";
+                    endif;
+                    ?>
 
-    <!-- =========================================
-       2. SECCIONES POR CATEGORÍA
-       ========================================= -->
-    <?php
-    $categorias_portada = array(
-        array('slug' => 'deportes', 'nombre' => 'Deportes'),
-        array('slug' => 'cultura', 'nombre' => 'Cultura'),
-        array('slug' => 'entretencion', 'nombre' => 'Entretención')
-    );
-
-    foreach ($categorias_portada as $cat) :
-        $args_cat = array('posts_per_page' => 3, 'category_name' => $cat['slug'], 'post_status' => 'publish');
-        $query_cat = new WP_Query($args_cat);
-
-        if ($query_cat->have_posts()) :
-    ?>
-        <section class="seccion-categoria-bloque">
-            <div class="header-seccion-cat">
-                <h2><?php echo esc_html($cat['nombre']); ?></h2>
-                <!-- Se eliminó el botón "Ver más" -->
-            </div>
-            
-            <div class="grilla-categoria">
-                <?php 
-                while ($query_cat->have_posts()) : $query_cat->the_post(); 
-                    $content = apply_filters('the_content', get_the_content());
-                    preg_match('/<h[1-3][^>]*>(.*?)<\/h[1-3]>/is', $content, $matches_h);
-                    $titulo_nota = !empty($matches_h[1]) ? strip_tags($matches_h[1]) : get_the_title();
-                ?>
-                    <article class="tarjeta-categoria-item">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <div class="imagen-cat-item">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail('medium'); ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <div class="contenido-cat-item">
-                            <h3><a href="<?php the_permalink(); ?>"><?php echo esc_html($titulo_nota); ?></a></h3>
-                            <p><?php echo wp_trim_words(get_the_excerpt(), 12); ?></p>
-                            <span class="fecha-tarjeta"><?php echo get_the_date(); ?></span>
-                        </div>
-                    </article>
-                <?php endwhile; wp_reset_postdata(); ?>
+                </div>
             </div>
         </section>
-    <?php 
-        endif;
-    endforeach; 
-    ?>
+
+    </div>
 
 </main>
+
+<!-- Script inicializador de Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.eventos-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                breakpoints: {
+                    576: { slidesPerView: 2, spaceBetween: 20 },
+                    992: { slidesPerView: 3, spaceBetween: 25 },
+                    1200: { slidesPerView: 4, spaceBetween: 25 }
+                },
+                loop: false
+            });
+        }
+    });
+</script>
 
 <?php get_footer(); ?>

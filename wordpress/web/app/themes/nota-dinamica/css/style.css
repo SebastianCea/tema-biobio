@@ -1093,3 +1093,25 @@ header i, footer i, header .fa, footer .fa, header .dashicons, footer .dashicons
     .columna-ultimas-notas { border-left: none; padding-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 30px; }
     .grilla-categoria { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   ESTILOS RESPONSIVOS DEL HEADER (SOCIALES)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Mostrar botón hamburguesa y ocultar redes/buscador de escritorio */
+    .burger-btn {
+        display: block !important;
+    }
+    .rrss-menu, .search-desktop, .search-icon, .header-divider {
+        display: none !important;
+    }
+    /* Centrar logo en móvil cuando se usa hamburguesa */
+    .logo-sitio {
+        position: static !important;
+        transform: none !important;
+        margin: 0 auto;
+    }
+    .contenedor-header {
+        justify-content: space-between !important;
+    }
+}
