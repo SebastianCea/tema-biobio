@@ -35,19 +35,16 @@ define( 'DB_CHARSET', getenv_docker('WORDPRESS_DB_CHARSET', 'utf8mb4') );
 define( 'DB_COLLATE', getenv_docker('WORDPRESS_DB_COLLATE', '') );
 
 /**
- * Authentication unique keys and salts.
- * IMPORTANTE: los valores por defecto de aquí abajo son solo un fallback de emergencia.
- * En producción SIEMPRE deben venir desde las variables de entorno (.env), que ahora
- * sí se pasan correctamente gracias al docker-compose.yml corregido.
+ * Authentication unique keys and salts
  */
-define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         'cambia-esto-genera-en-api.wordpress.org') );
-define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  'cambia-esto-genera-en-api.wordpress.org') );
-define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    'cambia-esto-genera-en-api.wordpress.org') );
-define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        'cambia-esto-genera-en-api.wordpress.org') );
-define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        'cambia-esto-genera-en-api.wordpress.org') );
-define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', 'cambia-esto-genera-en-api.wordpress.org') );
-define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   'cambia-esto-genera-en-api.wordpress.org') );
-define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       'cambia-esto-genera-en-api.wordpress.org') );
+define( 'AUTH_KEY',         getenv_docker('WORDPRESS_AUTH_KEY',         'r|,O.{1|}rUB9g%a#Rprui0F~]dTnJ`]9xVIC jY#-mdRR-4{`r&ux}!^BS)&]5x') );
+define( 'SECURE_AUTH_KEY',  getenv_docker('WORDPRESS_SECURE_AUTH_KEY',  'eW<Ok_wddeBIX(]7GEI4r=7,6jc8AbBhOPk>D8w-VvkB&VDp:4/u:fjX**_JP/M*') );
+define( 'LOGGED_IN_KEY',    getenv_docker('WORDPRESS_LOGGED_IN_KEY',    '<m0t7a])juU:Z7x2wGVP<HKNl`mjC>s|zuu;*+ub$bS`YiJBbtW#FW9P}8#KqHBP') );
+define( 'NONCE_KEY',        getenv_docker('WORDPRESS_NONCE_KEY',        '8apg-q|Vs0,%?]hQz?c&q|Fucc[l):LX-z_rbU=gU~/]Vy5Vwdj{!Ptc]KIE|:kk') );
+define( 'AUTH_SALT',        getenv_docker('WORDPRESS_AUTH_SALT',        '#g#F2$An|]sZs!%?~H,W8umh;V<q.&Ti6_<8o]#(OT(&<oC0X3w-5-K?-8A}/Z8p') );
+define( 'SECURE_AUTH_SALT', getenv_docker('WORDPRESS_SECURE_AUTH_SALT', ')P8_f |~C?D|8B 7>*fyS+{T5R7x[mA-ThzUig[iq*o?L=&-[PCP>^VJi|h6|:O4') );
+define( 'LOGGED_IN_SALT',   getenv_docker('WORDPRESS_LOGGED_IN_SALT',   '2NwEL)viJoY:%`So&%>@P.e9<2O)W+Q4as2< X2+*?WegGpN>T-$i-kYBm3soDal') );
+define( 'NONCE_SALT',       getenv_docker('WORDPRESS_NONCE_SALT',       '?Fzr|:8*jS*E}vVF:f,5+./pV)3lVpyW,?ln1jM._{3Qs$}scF:`82u`-Y$x?%>m') );
 
 /**
  * WordPress database table prefix.
