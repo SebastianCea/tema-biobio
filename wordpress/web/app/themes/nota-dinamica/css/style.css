@@ -226,6 +226,7 @@ body[data-tema="oscuro"] .seccion-normal { color: #ffffff; }
 
 /* El Video en modo Video */
 .seccion-pin-corregida:has(video) > :nth-child(1) {
+    position: -webkit-sticky !important;
     position: sticky !important;
     top: 0 !important;
     height: 100vh !important;
@@ -250,6 +251,7 @@ body[data-tema="oscuro"] .seccion-normal { color: #ffffff; }
    ========================================= */
 .cuadro-flotante,
 .wp-block-group.is-style-seccion-video-pin .cuadro-flotante {
+    position: -webkit-sticky !important;
     position: sticky !important;
     top: calc(50vh - 150px) !important;
     font-family: 'Merriweather', serif;
@@ -635,7 +637,7 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     .seccion-pin-corregida { min-height: 250svh; background-attachment: scroll; }
     .seccion-pin-corregida > .contenedor-del-cuadro { padding-top: 80svh; padding-bottom: 80svh; }
 
-    /* Fix Móvil: Dato Anclado (Video) */
+    /* Fix Móvil: Dato Anclado (Video) - bloque Gutenberg is-style-seccion-video-pin */
     .wp-block-group.is-style-seccion-video-pin > :first-child:not(.wp-block-group__inner-container),
     .wp-block-group.is-style-seccion-video-pin > .wp-block-group__inner-container > :first-child {
         height: 100svh !important;
@@ -644,6 +646,17 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     .wp-block-group.is-style-seccion-video-pin > :nth-child(2):not(.wp-block-group__inner-container),
     .wp-block-group.is-style-seccion-video-pin > .wp-block-group__inner-container > :nth-child(2) {
         padding-top: 80svh !important; 
+        padding-bottom: 80svh !important;
+    }
+
+    /* Fix Móvil: Dato Anclado (Video) - clase .seccion-pin-corregida:has(video)
+       ESTA es la que faltaba: antes se quedaba con el 100vh/100vh de escritorio
+       (con !important) porque el override mobile solo cubría la clase de arriba. */
+    .seccion-pin-corregida:has(video) > :nth-child(1) {
+        height: 100svh !important;
+    }
+    .seccion-pin-corregida:has(video) > .contenedor-del-cuadro {
+        padding-top: 80svh !important;
         padding-bottom: 80svh !important;
     }
 
@@ -942,6 +955,167 @@ div.perfil-periodista-horizontal { display: inline-flex !important; width: max-c
     }
     .home .grilla-categoria { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   17. NAVEGACIÓN Y CARRUSEL DE NOTAS SUGERIDAS
+   Azul fijo del front-page — independiente del color que el
+   periodista elija para el header/footer de la nota.
+   ========================================= */
+
+.botones-navegacion-final {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-regresar-home,
+.btn-ir-biobio {
+    color: #ffffff !important;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-regresar-home {
+    background-color: #01162a;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-regresar-home:hover {
+    background-color: #022c54;
+    transform: translateY(-2px);
+}
+
+.btn-ir-biobio {
+    background-color: #005bb5;
+}
+.btn-ir-biobio:hover {
+    background-color: #0072e0;
+    transform: translateY(-2px);
+}
+
+/* Título "Revisa las últimas notas": siempre blanco, porque ahora vive
+   dentro de .pie-nota-azul (fondo azul fijo), tanto en portada como en notas */
+.text-revisa-los-ultimos {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Merriweather', serif;
+    color: #ffffff;
+}
+
+/* Pie de nota con azul fijo del front-page: envuelve botones, navegación
+   anterior/siguiente y carrusel de sugeridas. Independiente del color
+   que el periodista haya elegido para el header/footer de esa nota. */
+.pie-nota-azul {
+    background-color: #022c54;
+    width: 100%;
+    padding: 50px 0 40px 0;
+}
+
+/* Navegación anterior/siguiente dentro del pie azul */
+.evento-nav-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto 10px auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px 18px;
+    max-width: 45%;
+    transition: background-color 0.3s ease;
+}
+.nav-btn:hover { background-color: rgba(255, 255, 255, 0.12); }
+.nav-btn .arrow { font-size: 1.4rem; font-weight: bold; flex-shrink: 0; }
+.nav-btn .nav-text { display: flex; flex-direction: column; overflow: hidden; }
+.nav-btn .label { font-size: 0.75rem; text-transform: uppercase; opacity: 0.6; margin: 0; }
+.nav-btn .nombre {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Merriweather', serif;
+}
+.nav-btn.next { flex-direction: row-reverse; text-align: right; margin-left: auto; }
+
+@media (max-width: 768px) {
+    .evento-nav-top { flex-direction: column; }
+    .nav-btn { max-width: 100%; }
+}
+
+/* Carrusel de notas sugeridas (portada y notas) */
+.evento-card-wrapper {
+    background: #01162a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+}
+.evento-card-wrapper:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+.evento-img-container {
+    overflow: hidden;
+    height: 180px;
+    width: 100%;
+}
+.evento-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.evento-card-wrapper:hover .evento-img-container img {
+    transform: scale(1.08);
+}
+
+.evento-nombre-texto {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.evento-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.evento-texto-link {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide { height: auto; }
 
 /* =========================================
    16. ESTILOS RESPONSIVOS DEL HEADER (SOCIALES)

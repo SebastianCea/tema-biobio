@@ -13,49 +13,11 @@ if ( is_404() ) {
 
 <?php get_header(); ?>
 
-<style>
-    /* Estilos del carrusel y tarjetas */
-    .evento-card-wrapper {
-        background: #01162a;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .evento-img-container {
-        overflow: hidden;
-        height: 180px;
-        width: 100%;
-    }
-    .evento-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-    }
-    .evento-card-wrapper:hover .evento-img-container img {
-        transform: scale(1.08); /* Efecto Zoom */
-    }
-    .evento-nombre-texto {
-        font-family: 'Merriweather', serif;
-        font-size: 1rem;
-        color: #ffffff;
-        font-weight: bold !important; /* Título en negrita */
-        margin: 0;
-        line-height: 1.3;
-    }
-    .swiper-slide {
-        height: auto;
-    }
-</style>
-
 <!-- Librería CSS de Swiper -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
 <!-- padding-top reducido a 65px para acercarlo más al header fijo -->
-<main class="main-layout portada-sociales-estilo" style="padding-top: 65px; min-height: calc(100vh - 100px); display: flex; flex-direction: column; justify-content: center;">
+<main class="main-layout portada-sociales-estilo" style="padding-top: 65px; min-height: calc(100vh - 100px); display: flex; flex-direction: column; justify-content: flex-start;"> 
 
     <div class="main-content" style="width: 100%; padding: 20px 0;">
 
@@ -64,7 +26,7 @@ if ( is_404() ) {
             <img src="<?php echo get_template_directory_uri(); ?>/images/BioBio/bbcl-logo.svg" alt="Logo Portada" style="height: 60px; width: auto; filter: brightness(0) invert(1); display: inline-block;">
         </div>
 
-        <div class="text-revisa-los-ultimos mx-auto" style="text-align: center; font-size: 1.5rem; font-family: 'Merriweather', serif; color: #ffffff; margin-bottom: 30px;">
+        <div class="text-revisa-los-ultimos mx-auto" style="margin-bottom: 30px;">
             <strong>Revisa las últimas notas</strong>
         </div>
 
@@ -96,11 +58,11 @@ if ( is_404() ) {
                     ?>
                             <div class="swiper-slide">
                                 <div class="evento-card-wrapper">
-                                    <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                                    <a href="<?php the_permalink(); ?>" class="evento-link">
                                         <div class="evento-img-container">
                                             <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($titulo_nota); ?>">
                                         </div>
-                                        <div style="padding: 15px; flex-grow: 1; display: flex; align-items: center;">
+                                        <div class="evento-texto-link">
                                             <p class="evento-nombre-texto"><?php echo esc_html($titulo_nota); ?></p>
                                         </div>
                                     </a>

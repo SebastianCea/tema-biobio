@@ -24,42 +24,6 @@ get_header();
     .article-content-body {
         width: 100%;
     }
-
-    /* Estilos del carrusel inferior y tarjetas */
-    .evento-card-wrapper {
-        background: #01162a;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .evento-img-container {
-        overflow: hidden;
-        height: 180px;
-        width: 100%;
-    }
-    .evento-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-    }
-    .evento-card-wrapper:hover .evento-img-container img {
-        transform: scale(1.08);
-    }
-    .evento-nombre-texto {
-        font-family: 'Merriweather', serif;
-        font-size: 1rem;
-        color: #ffffff;
-        font-weight: bold !important;
-        margin: 0;
-        line-height: 1.3;
-    }
-    .swiper-slide {
-        height: auto;
-    }
 </style>
 
 <!-- Librería CSS de Swiper -->
@@ -96,22 +60,29 @@ get_header();
                 </script>
             </div>
 
+        </div>
+
+        <!-- =========================================
+           PIE DE NOTA: azul fijo del front-page (botones + navegación + sugeridas)
+           No depende del color de header/footer de esta nota específica
+           ========================================= -->
+        <div class="pie-nota-azul">
+
             <!-- =========================================
                BOTONES DE NAVEGACIÓN FINAL
+               Azul fijo del front-page, no depende del color de la nota
                ========================================= -->
-            <div class="botones-navegacion-final" style="max-width: 800px; margin: 40px auto; padding: 0 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <div class="botones-navegacion-final">
                 
-                <a href="<?php echo home_url('/'); ?>" class="btn-regresar-home" style="background-color: #01162a; color: #ffffff; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s ease;">
+                <a href="<?php echo home_url('/'); ?>" class="btn-regresar-home">
                     &larr; Volver al Home
                 </a>
 
-                <a href="https://www.biobiochile.cl" target="_blank" class="btn-ir-biobio" style="background-color: #004687; color: #ffffff; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s ease;">
+                <a href="https://www.biobiochile.cl" target="_blank" class="btn-ir-biobio">
                     Ir a BioBioChile &rarr;
                 </a>
 
             </div>
-
-        </div>
 
         <!-- NAVEGACION ENTRE POSTS -->
         <section class="siguiente-evento">
@@ -141,11 +112,11 @@ get_header();
         </section>
 
         <!-- Carrusel inferior -->
-        <div class="text-revisa-los-ultimos mx-auto" style="text-align: center; font-size: 1.5rem; font-family: 'Merriweather', serif; color: #ffffff; margin: 40px 0 25px 0;">
+        <div class="text-revisa-los-ultimos mx-auto" style="margin: 40px 0 25px 0;">
             <strong>Revisa las últimas notas</strong>
         </div>
 
-        <section class="eventos-section" style="max-width: 1300px; margin: 0 auto 50px auto; padding: 0 20px;">
+        <section class="eventos-section" style="max-width: 1300px; margin: 0 auto; padding: 0 20px;">
             <div class="swiper eventos-swiper">
                 <div class="swiper-wrapper">
                     <?php
@@ -171,11 +142,11 @@ get_header();
                     ?>
                             <div class="swiper-slide">
                                 <div class="evento-card-wrapper">
-                                    <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                                    <a href="<?php the_permalink(); ?>" class="evento-link">
                                         <div class="evento-img-container">
                                             <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($titulo_nota); ?>">
                                         </div>
-                                        <div style="padding: 15px; flex-grow: 1; display: flex; align-items: center;">
+                                        <div class="evento-texto-link">
                                             <p class="evento-nombre-texto"><?php echo esc_html($titulo_nota); ?></p>
                                         </div>
                                     </a>
@@ -187,6 +158,8 @@ get_header();
                 </div>
             </div>
         </section>
+
+        </div><!-- /.pie-nota-azul -->
 
     </main>
 
